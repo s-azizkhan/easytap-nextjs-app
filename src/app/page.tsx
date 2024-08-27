@@ -1,113 +1,165 @@
-import Image from "next/image";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  Star,
+  DollarSign,
+  MessagesSquare,
+  PersonStanding,
+  Timer,
+  Zap,
+  ZoomIn,
+} from "lucide-react";
+
+const features = [
+  {
+    title: "Performance",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+    icon: <Timer className="size-4 md:size-6" />,
+  },
+  {
+    title: "Innovation",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+    icon: <Zap className="size-4 md:size-6" />,
+  },
+  {
+    title: "Quality",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+    icon: <ZoomIn className="size-4 md:size-6" />,
+  },
+  {
+    title: "Accessibility",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+    icon: <PersonStanding className="size-4 md:size-6" />,
+  },
+  {
+    title: "Affordability",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+    icon: <DollarSign className="size-4 md:size-6" />,
+  },
+  {
+    title: "Customer Support",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+    icon: <MessagesSquare className="size-4 md:size-6" />,
+  },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      <section className="py-32">
+        <div className="container text-center">
+          <div className="mx-auto flex max-w-screen-lg flex-col gap-6">
+            <h1 className="text-3xl font-extrabold lg:text-6xl">
+              Extend your hospitality with EasyTap
+            </h1>
+            <p className="text-balance text-muted-foreground lg:text-lg">
+              EasyTap is a platform that allows you to extend your hospitality
+              with ease.
+            </p>
+          </div>
+          <Button size="lg" className="mt-10">
+            Discover all components
+          </Button>
+          <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row">
+            <span className="mx-4 inline-flex items-center -space-x-4">
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-1.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-2.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-3.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-4.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-5.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+            </span>
+            <div>
+              <div className="flex items-center gap-1">
+                <Star className="size-5 fill-yellow-400 text-yellow-400" />
+                <Star className="size-5 fill-yellow-400 text-yellow-400" />
+                <Star className="size-5 fill-yellow-400 text-yellow-400" />
+                <Star className="size-5 fill-yellow-400 text-yellow-400" />
+                <Star className="size-5 fill-yellow-400 text-yellow-400" />
+                <span className="font-semibold">5.0</span>
+              </div>
+              <p className="text-left font-medium text-muted-foreground">
+                from 200+ reviews
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+      <section className="pb-32">
+        <div className="container mx-auto max-w-screen-xl">
+          <p className="mb-4 text-xs text-muted-foreground md:pl-5">Features</p>
+          <h2 className="text-3xl font-bold md:pl-5 lg:text-4xl">
+            Our Core Features
           </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="mx-auto mt-14 grid gap-x-20 gap-y-8 md:gap-y-6 md:grid-cols-2 lg:mt-20">
+            {features.map((feature, idx) => (
+              <div className="flex gap-6 rounded-lg md:block md:p-5" key={idx}>
+                <span className="mb-8 flex size-10 shrink-0 items-center justify-center rounded-full bg-accent md:size-12">
+                  {feature.icon}
+                </span>
+                <div>
+                  <h3 className="font-medium md:mb-2 md:text-xl">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground md:text-base">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <section className="pb-32">
+        <div className="container">
+          <div className="flex w-full flex-col gap-16 overflow-hidden rounded-lg bg-accent p-8 md:rounded-xl lg:flex-row lg:items-center lg:p-16">
+            <div className="flex-1">
+              <h3 className="mb-3 text-2xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
+                Generate Menu Now
+              </h3>
+              <p className="text-muted-foreground lg:text-lg">
+                Create your menu with our AI assistant with just one click.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+              <Button variant="outline">Learn More</Button>
+              <Button>Get Started</Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
