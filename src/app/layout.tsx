@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Bricolage_Grotesque } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+
+import { ThemeProvider } from "@/components/theme-provider";
+
+import PageHeader from "@/components/page-header";
+import PageFooter from "@/components/page-footer";
 
 // const inter = Inter({ subsets: ["latin"] });
 const bricolage = Bricolage_Grotesque({
@@ -20,7 +25,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={bricolage.className}>{children}</body>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <body className={`${bricolage.className} bg-background`}>
+          <PageHeader />
+          <main>{children}</main>
+          <PageFooter />
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
