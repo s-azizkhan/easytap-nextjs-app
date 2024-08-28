@@ -15,11 +15,9 @@ const sections = [
     title: "Product",
     links: [
       { name: "Overview", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Marketplace", href: "#" },
-      { name: "Features", href: "#" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Features", href: "/features" },
       { name: "Integrations", href: "#" },
-      { name: "Pricing", href: "#" },
     ],
   },
   {
