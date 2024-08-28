@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 import {
   FaApple,
   FaDiscord,
@@ -27,7 +28,7 @@ const sections = [
       { name: "Team", href: "#" },
       { name: "Blog", href: "#" },
       { name: "Careers", href: "#" },
-      { name: "Contact", href: "#" },
+      { name: "Contact", href: "/contact" },
       { name: "Privacy", href: "#" },
     ],
   },
@@ -43,7 +44,7 @@ const sections = [
 
 export default function PageFooter() {
   return (
-    <section className="py-8">
+    <section className="py-6">
       <div className="container">
         <footer>
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
@@ -53,18 +54,18 @@ export default function PageFooter() {
                 Extend your hospitality like never before.
               </p>
               <div className="flex gap-2">
-                <a
+                <Link
                   href="#"
                   className="inline-flex rounded-lg bg-primary p-2.5 justify-center items-center"
                 >
                   <FaApple className="size-7 text-background" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="inline-flex rounded-lg bg-primary p-2.5 justify-center items-center"
                 >
                   <FaGooglePlay className="size-7 text-background" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -79,7 +80,7 @@ export default function PageFooter() {
                       key={linkIdx}
                       className="font-medium hover:text-primary"
                     >
-                      <a href={link.href}>{link.name}</a>
+                      <Link href={link.href}>{link.name}</Link>
                     </li>
                   ))}
                 </ul>
@@ -89,7 +90,7 @@ export default function PageFooter() {
               <h3 className="mb-4 font-bold">Legal</h3>
               <ul className="space-y-4 text-muted-foreground">
                 <li className="font-medium hover:text-primary">
-                  <a href="#">Term of Services</a>
+                  <Link href="#">Term of Services</Link>
                 </li>
                 <li className="font-medium hover:text-primary">
                   <a href="#">Privacy Policy</a>
@@ -122,7 +123,7 @@ export default function PageFooter() {
           </div>
           <Separator className="my-14" />
           <p className="text-sm text-muted-foreground">
-            © 2024 EasyTap. All rights reserved.
+            © {new Date().getFullYear()} EasyTap. All rights reserved.
           </p>
         </footer>
       </div>

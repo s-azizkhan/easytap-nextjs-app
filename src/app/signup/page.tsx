@@ -10,9 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Globe, UserRound } from "lucide-react";
-import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
+import { FaGoogle } from "react-icons/fa";
 
 export default function LoginPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -42,24 +41,33 @@ export default function LoginPage() {
           <p className="text-3xl font-bold inline-flex justify-center">
             EasyTap
           </p>
-
           <Card className="mx-auto max-w-sm w-full">
             <CardHeader>
-              <CardTitle className="text-xl">Log in</CardTitle>
+              <CardTitle className="text-xl">Sign Up</CardTitle>
               <CardDescription>
-                Enter your information to login.
+                Enter your information to create an account
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid gap-4">
                 <Button variant="outline" className="w-full">
                   <FaGoogle className="mr-2 size-4" />
-                  Continue with Google
+                  Sign up with Google
                 </Button>
                 <div className="flex items-center gap-4">
                   <span className="h-px w-full bg-input"></span>
                   <span className="text-xs text-muted-foreground">OR</span>
                   <span className="h-px w-full bg-input"></span>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="first-name">First name</Label>
+                    <Input id="first-name" placeholder="Max" required />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="last-name">Last name</Label>
+                    <Input id="last-name" placeholder="Robinson" required />
+                  </div>
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
@@ -71,27 +79,17 @@ export default function LoginPage() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <div className="flex justify-between">
-                    <Label htmlFor="password">Password</Label>
-                    <Link href="#" className="text-sm underline">
-                      Forgot password?
-                    </Link>
-                  </div>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="Enter your password"
-                    required
-                  />
+                  <Label htmlFor="password">Password</Label>
+                  <Input id="password" type="password" placeholder="********" />
                 </div>
                 <Button type="submit" className="w-full">
-                  Log in
+                  Create an account
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">
-                Don&apos;t have an account yet?{" "}
-                <Link href="/signup" className="underline">
-                  Sign up
+                Already have an account?{" "}
+                <Link href="/login" className="underline">
+                  Sign in
                 </Link>
               </div>
             </CardContent>

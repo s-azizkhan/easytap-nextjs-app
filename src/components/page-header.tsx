@@ -1,4 +1,14 @@
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  Book,
+  Menu,
+  Sparkles,
+  SparklesIcon,
+  Sunset,
+  Trees,
+  User2Icon,
+  Zap,
+} from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
@@ -31,21 +41,19 @@ const subMenuItemsTwo = [
     title: "Help Center",
     description: "Get all the answers you need right here",
     icon: <Zap className="size-5 shrink-0" />,
+    href: "/faq",
   },
   {
     title: "Contact Us",
     description: "We are here to help you with any questions you have",
     icon: <Sunset className="size-5 shrink-0" />,
-  },
-  {
-    title: "Status",
-    description: "Check the current status of our services and APIs",
-    icon: <Trees className="size-5 shrink-0" />,
+    href: "/contact",
   },
   {
     title: "Terms of Service",
     description: "Our terms and conditions for using our services",
     icon: <Book className="size-5 shrink-0" />,
+    href: "#",
   },
 ];
 
@@ -90,8 +98,8 @@ export default function PageHeader() {
                         <ul className="w-80 p-3">
                           {subMenuItemsTwo.map((item, idx) => (
                             <li key={idx}>
-                              <a
-                                href="#"
+                              <NavigationMenuLink
+                                href={item.href}
                                 className={cn(
                                   "flex items-start gap-4 rounded-md p-3 transition hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 )}
@@ -105,7 +113,7 @@ export default function PageHeader() {
                                     {item.description}
                                   </p>
                                 </div>
-                              </a>
+                              </NavigationMenuLink>
                             </li>
                           ))}
                         </ul>
@@ -135,8 +143,12 @@ export default function PageHeader() {
                   Blog
                 </Link>
               </div>
-              <Button variant="outline">Log in</Button>
-              <Button>Sign up</Button>
+              <Link href="/signup">
+                <Button>
+                  <span>Generate Menu</span>
+                  <Sparkles className="size-4 ml-2" />
+                </Button>
+              </Link>
               {/* Mode Toggle */}
               <ModeToggle />
             </div>
@@ -150,6 +162,12 @@ export default function PageHeader() {
                 {/* TODO: add logo */}
                 <span className="text-xl font-bold">EasyTap</span>
               </div>
+            </Link>
+            <Link href="/signup">
+              <Button>
+                <span>Generate Menu</span>
+                <Sparkles className="size-4 ml-2" />
+              </Button>
             </Link>
             {/* Mobile Menu Button */}
             <Sheet>
@@ -176,7 +194,7 @@ export default function PageHeader() {
                   {/* Accordion for Resources */}
                   <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="resources" className="border-b-0">
-                      <AccordionTrigger className="py-0 font-semibold hover:no-underline">
+                      <AccordionTrigger className="py-0 font-semibold hover:no-underline bg-transparent">
                         Resources
                       </AccordionTrigger>
                       <AccordionContent className="mt-2">
@@ -221,15 +239,15 @@ export default function PageHeader() {
                     >
                       Press
                     </a>
-                    <a
-                      href="#"
+                    <Link
+                      href="/contact"
                       className={cn(
                         buttonVariants({ variant: "ghost" }),
                         "justify-start text-muted-foreground"
                       )}
                     >
                       Contact
-                    </a>
+                    </Link>
                     <a
                       href="#"
                       className={cn(
@@ -250,8 +268,17 @@ export default function PageHeader() {
                     </a>
                   </div>
                   <div className="mt-2 flex flex-col gap-3">
-                    <Button variant="outline">Log in</Button>
-                    <Button>Sign up</Button>
+                    <Link href="/signup">
+                      <Button>
+                        <span>Generate Menu</span>
+                        <SparklesIcon className="size-4 ml-2" />
+                      </Button>
+                    </Link>
+                    <Link href="/login">
+                      <Button variant="outline">
+                        Log in <User2Icon className="size-4 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </SheetContent>
