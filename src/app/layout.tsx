@@ -1,3 +1,4 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
   description: "Extend your hospitality with EasyTap",
 };
 
+const gtmId = process.env.NEXT_PUBLIC_GA_ID as string;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,6 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {gtmId && <GoogleTagManager gtmId={gtmId} />}
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
