@@ -1,14 +1,4 @@
-import {
-  ArrowRight,
-  Book,
-  Menu,
-  Sparkles,
-  SparklesIcon,
-  Sunset,
-  Trees,
-  User2Icon,
-  Zap,
-} from "lucide-react";
+import { Book, Menu, Sunset, User2Icon, Zap } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
@@ -35,6 +25,7 @@ import {
 } from "@/components/ui/accordion";
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
+import { AiImageIcon } from "hugeicons-react";
 
 const subMenuItemsTwo = [
   {
@@ -146,7 +137,7 @@ export default function PageHeader() {
               <Link href="/register">
                 <Button>
                   <span>Generate Menu</span>
-                  <Sparkles className="size-4 ml-2" />
+                  <AiImageIcon className="size-4 ml-2" />
                 </Button>
               </Link>
               {/* Mode Toggle */}
@@ -166,7 +157,7 @@ export default function PageHeader() {
             <Link href="/register">
               <Button>
                 <span>Generate Menu</span>
-                <Sparkles className="size-4 ml-2" />
+                <AiImageIcon className="size-4 ml-2" />
               </Button>
             </Link>
             {/* Mobile Menu Button */}
@@ -271,7 +262,7 @@ export default function PageHeader() {
                     <Link href="/register">
                       <Button>
                         <span>Generate Menu</span>
-                        <SparklesIcon className="size-4 ml-2" />
+                        <AiImageIcon className="size-4 ml-2" />
                       </Button>
                     </Link>
                     <Link href="/sign-in">

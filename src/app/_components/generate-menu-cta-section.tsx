@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ArrowRight01Icon, ArrowUpRight01Icon } from "hugeicons-react";
 
 export default function GenerateMenuCtaSection() {
   return (
@@ -14,8 +15,14 @@ export default function GenerateMenuCtaSection() {
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <Button variant="outline">Learn More</Button>
-            <Button>Get Started</Button>
+            <Button variant="outline">
+              Learn More
+              <ArrowUpRight01Icon className="ml-2 size-5" />
+            </Button>
+            <Button>
+              Get Started
+              <ArrowRight01Icon className="ml-2 size-5" />
+            </Button>
           </div>
         </div>
       </div>

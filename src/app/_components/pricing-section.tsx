@@ -10,6 +10,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+import { ArrowRight01Icon } from "hugeicons-react";
 
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
@@ -72,7 +73,7 @@ export default function PricingSection() {
               <CardFooter className="mt-auto">
                 <Button className="w-full">
                   Get Started
-                  <ArrowRight className="ml-2 size-4" />
+                  <ArrowRight01Icon className="ml-2 size-5" />
                 </Button>
               </CardFooter>
             </Card>
@@ -118,7 +119,7 @@ export default function PricingSection() {
               <CardFooter className="mt-auto">
                 <Button className="w-full">
                   Get Started
-                  <ArrowRight className="ml-2 size-4" />
+                  <ArrowRight01Icon className="ml-2 size-4" />
                 </Button>
               </CardFooter>
             </Card>
