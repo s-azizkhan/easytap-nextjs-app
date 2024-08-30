@@ -143,7 +143,7 @@ export default function PageHeader() {
                   Blog
                 </Link>
               </div>
-              <Link href="/signup">
+              <Link href="/register">
                 <Button>
                   <span>Generate Menu</span>
                   <Sparkles className="size-4 ml-2" />
@@ -163,7 +163,7 @@ export default function PageHeader() {
                 <span className="text-xl font-bold">EasyTap</span>
               </div>
             </Link>
-            <Link href="/signup">
+            <Link href="/register">
               <Button>
                 <span>Generate Menu</span>
                 <Sparkles className="size-4 ml-2" />
@@ -268,13 +268,13 @@ export default function PageHeader() {
                     </a>
                   </div>
                   <div className="mt-2 flex flex-col gap-3">
-                    <Link href="/signup">
+                    <Link href="/register">
                       <Button>
                         <span>Generate Menu</span>
                         <SparklesIcon className="size-4 ml-2" />
                       </Button>
                     </Link>
-                    <Link href="/login">
+                    <Link href="/sign-in">
                       <Button variant="outline">
                         Log in <User2Icon className="size-4 ml-2" />
                       </Button>

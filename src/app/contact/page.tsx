@@ -1,6 +1,4 @@
 "use client";
-import { FormEvent } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,9 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import {
   AwardIcon,
   ClockIcon,
@@ -21,19 +16,12 @@ import {
   RocketIcon,
   ThumbsUpIcon,
 } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import ContactForm from "./Form";
 
 export default function ContactPage() {
   const { theme } = useTheme();
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
-  }
 
   return (
     <section className="pb-24 pt-16">
@@ -44,8 +32,9 @@ export default function ContactPage() {
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold">Get in Touch</h1>
                 <p className="text-muted-foreground mt-2 text-lg md:text-xl">
-                  Have a question or want to work together? Fill out the form
-                  below and we'll get back to you as soon as possible.
+                  {
+                    "Have a question or want to work together? Fill out the form below and we'll get back to you as soon as possible."
+                  }
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-6">
@@ -98,39 +87,13 @@ export default function ContactPage() {
                   Send Us a Message
                 </CardTitle>
                 <CardDescription className="text-md">
-                  Have a question or want to work together? Fill out the form
-                  below and we'll get back to you{" "}
-                  <span className="font-bold">with in 1 business day.</span>
+                  {
+                    "Have a question or want to work together? Fill out the form below and we'll get back to you with in 1 business day."
+                  }
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Name</Label>
-                      <Input id="name" placeholder="Enter your name" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Enter your message"
-                      className="min-h-[120px]"
-                    />
-                  </div>
-                  <div className="flex justify-end">
-                    <Button type="submit">Submit</Button>
-                  </div>
-                </form>
+                <ContactForm />
               </CardContent>
             </Card>
           </div>

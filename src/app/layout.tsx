@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
@@ -7,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import PageHeader from "@/components/page-header";
 import PageFooter from "@/components/page-footer";
+import SessionWrapper from "../../components/SessionWrapper";
 
 // const inter = Inter({ subsets: ["latin"] });
 const bricolage = Bricolage_Grotesque({
@@ -27,20 +29,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {gtmId && <GoogleTagManager gtmId={gtmId} />}
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <body className={`${bricolage.className} bg-background`}>
-          <PageHeader />
-          <main>{children}</main>
-          <PageFooter />
-        </body>
-      </ThemeProvider>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster position="top-right" closeButton richColors />
+          <body className={`${bricolage.className} bg-background`}>
+            <PageHeader />
+            <main>{children}</main>
+            <PageFooter />
+          </body>
+        </ThemeProvider>
+      </html>
+    </SessionWrapper>
   );
 }
