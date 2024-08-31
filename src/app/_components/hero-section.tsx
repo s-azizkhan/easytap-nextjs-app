@@ -57,7 +57,7 @@ export default function HeroSection() {
           </div>
 
           <div className="mx-auto flex max-w-screen-lg flex-col gap-8">
-            <h1 className="flex flex-col justify-center items-center text-center text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-7xl">
+            <h1 className="flex flex-col justify-center items-center text-center text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-50">
               Extend your hospitality
               <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center text-3xl sm:text-4xl lg:text-6xl mt-2">
                 with EasyTap AI
@@ -72,7 +72,7 @@ export default function HeroSection() {
           </div>
           <div className="mt-8 lg:mt-12 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
             <Link href="/register">
-              <AnimatedGradientText className="inline-flex items-center bg-black text-white text-base sm:text-lg font-semibold px-4 py-2 rounded-lg">
+              <AnimatedGradientText className="rounded-xl inline-flex items-center bg-black text-white text-base sm:text-lg font-semibold px-4 py-2">
                 Get Started
                 <ArrowRight01Icon className="ml-2 size-4 sm:size-5" />
               </AnimatedGradientText>
