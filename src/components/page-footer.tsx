@@ -46,7 +46,7 @@ export default function PageFooter() {
   return (
     <section className="py-6">
       <div className="container">
-        <footer className="bg-background rounded-xl p-10">
+        <footer className="bg-background rounded-xl p-5 lg:p-10">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
             <p className="text-2xl font-bold">EasyTap</p>
             <div className="flex flex-col gap-4 md:flex-row md:items-center">
