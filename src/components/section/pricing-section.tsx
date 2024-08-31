@@ -121,51 +121,51 @@ export default function PricingSection() {
                       : ""
                   }`}
                 >
-                  <CardHeader>
+                  <CardHeader className="relative">
                     {plan.name === "Growth" && (
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-md">
                         Most Popular
                       </div>
                     )}
-                    <CardTitle className="text-2xl font-bold">
+                    <CardTitle className="text-2xl font-bold flex items-center gap-2 mb-2">
                       {plan.icon}
                       {plan.name}
                     </CardTitle>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground mb-4">
                       {plan.description}
                     </p>
-                    <div className="mt-4 flex items-start">
-                      <span className="ml-2 text-xl mr-1 font-bold line-through text-muted-foreground">
-                        {plan.originalPrice}
-                      </span>
+                    <div className="flex items-baseline">
                       <span className="text-4xl font-bold">{plan.price}</span>
-                      <span className="text-muted-foreground">/month</span>
+                      <span className="text-muted-foreground ml-1">/month</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground mt-1">
                       Billed {plan.billingPeriod}
+                    </p>
+                    <p className="text-sm text-indigo-600 font-semibold mt-2">
+                      Save {isYearly ? "20%" : "0%"} with annual billing
                     </p>
                   </CardHeader>
                   <CardContent>
-                    <Separator className="mb-6" />
+                    <Separator className="my-6" />
                     <ul className="space-y-4">
                       {plan.features.map((feature, featureIndex) => (
                         <li
                           key={featureIndex}
-                          className="flex items-center gap-2"
+                          className="flex items-center gap-3"
                         >
-                          <CircleCheck className="size-5 text-green-500" />
-                          <span>{feature}</span>
+                          <CircleCheck className="size-5 text-indigo-600 flex-shrink-0" />
+                          <span className="text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </CardContent>
-                  <CardFooter className="mt-auto">
+                  <CardFooter className="mt-auto pt-6">
                     <Button
-                      className={`w-full ${
+                      className={`w-full transition-all duration-300 ${
                         plan.name === "Growth"
-                          ? "bg-indigo-600 hover:bg-indigo-700"
-                          : "bg-gray-200 hover:bg-indigo-700 text-gray-800"
-                      } text-white`}
+                          ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                          : "bg-white hover:bg-indigo-50 text-indigo-600 border border-indigo-600"
+                      }`}
                     >
                       {plan.name === "Growth"
                         ? "Get Started"
