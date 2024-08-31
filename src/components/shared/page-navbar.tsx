@@ -32,7 +32,7 @@ const subMenuItemsTwo = [
     title: "Help Center",
     description: "Get all the answers you need right here",
     icon: <Zap className="size-5 shrink-0" />,
-    href: "/faq",
+    href: "/help-center",
   },
   {
     title: "Contact Us",
