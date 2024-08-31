@@ -35,7 +35,7 @@ export default function GenerateMenuCtaSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex w-full flex-col gap-12 overflow-hidden rounded-3xl bg-white dark:bg-gray-800 shadow-xl p-8 md:p-12 lg:flex-row lg:items-center lg:p-16 transition-all duration-300 hover:shadow-2xl"
+          className="flex w-full flex-col gap-12 overflow-hidden rounded-3xl bg-background shadow-xl p-8 md:p-12 lg:flex-row lg:items-center lg:p-16 transition-all duration-300 hover:shadow-2xl"
         >
           <div className="flex-1 space-y-6">
             <h3 className="text-3xl font-bold md:text-4xl lg:text-5xl text-gray-900 dark:text-white">
