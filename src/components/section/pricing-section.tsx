@@ -10,122 +10,179 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
-import { ArrowRight01Icon } from "hugeicons-react";
+import {
+  ArrowRight01Icon,
+  Building01Icon,
+  Coffee01Icon,
+  Rocket01Icon,
+  SparklesIcon,
+} from "hugeicons-react";
+import MaxWidthWrapper from "../shared/max-width-wrapper";
+import { IconGrowth } from "@tabler/icons-react";
 
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
+  const plans = [
+    {
+      name: "Starter",
+      description: "Perfect for small cafes",
+      icon: <Coffee01Icon className="size-8 inline-flex text-indigo-600" />,
+      price: isYearly ? "$12" : "$15",
+      originalPrice: isYearly ? "$15" : "$19",
+      billingPeriod: isYearly ? "$144 annually" : "$180 annually",
+      features: [
+        "Basic AI menu suggestions",
+        "Simple order management",
+        "Customer feedback collection",
+        "Email support",
+      ],
+    },
+    {
+      name: "Growth",
+      description: "Ideal for growing restaurants",
+      icon: <Rocket01Icon className="size-8 inline-flex text-indigo-600" />,
+      price: isYearly ? "$28" : "$35",
+      originalPrice: isYearly ? "$35" : "$44",
+      billingPeriod: isYearly ? "$336 annually" : "$420 annually",
+      features: [
+        "Advanced AI menu optimization",
+        "Real-time order tracking",
+        "Detailed customer insights",
+        "24/7 priority support",
+      ],
+    },
+    {
+      name: "Enterprise",
+      description: "For multi-location chains",
+      icon: <Building01Icon className="size-8 inline-flex text-indigo-600" />,
+      price: isYearly ? "$56" : "$70",
+      originalPrice: isYearly ? "$70" : "$88",
+      billingPeriod: isYearly ? "$672 annually" : "$840 annually",
+      features: [
+        "Custom AI solutions",
+        "Multi-location management",
+        "Advanced analytics & reporting",
+        "Dedicated account manager",
+      ],
+    },
+  ];
   return (
-    <section className="py-32">
-      <div className="container">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-          <h2 className="text-pretty text-4xl font-bold lg:text-6xl">
-            Very affordable pricing
-          </h2>
-          <p className="text-muted-foreground lg:text-xl">
-            Our pricing is very affordable and we offer a 30-day money back
-            guarantee.
-          </p>
-          <div className="flex items-center gap-3 text-lg">
-            Monthly
-            <Switch
-              onCheckedChange={() => setIsYearly(!isYearly)}
-              checked={isYearly}
-            />
-            Yearly
-          </div>
-          <div className="flex flex-col items-stretch gap-6 md:flex-row">
-            <Card className="flex w-80 flex-col justify-between text-left">
-              <CardHeader>
-                <CardTitle>
-                  <p>Plus</p>
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  For personal use
-                </p>
-                <span className="text-4xl font-bold">
-                  {isYearly ? "$15" : "$19"}
-                </span>
-                <p className="text-muted-foreground">
-                  Billed {isYearly ? "$180" : "$228"} anually
-                </p>
-              </CardHeader>
-              <CardContent>
-                <Separator className="mb-6" />
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                </ul>
-              </CardContent>
-              <CardFooter className="mt-auto">
-                <Button className="w-full">
-                  Get Started
-                  <ArrowRight01Icon className="ml-2 size-5" />
-                </Button>
-              </CardFooter>
-            </Card>
-            <Card className="flex w-80 flex-col justify-between text-left">
-              <CardHeader>
-                <CardTitle>
-                  <p>Pro</p>
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  For professionals
-                </p>
-                <span className="text-4xl font-bold">
-                  {isYearly ? "$35" : "$49"}
-                </span>
-                <p className="text-muted-foreground">
-                  Billed {isYearly ? "$420" : "$588"} anually
-                </p>
-              </CardHeader>
-              <CardContent>
-                <Separator className="mb-6" />
-                <p className="mb-3 text-lg font-semibold">
-                  Everything in Plus, and:
-                </p>
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
-                  </li>
-                </ul>
-              </CardContent>
-              <CardFooter className="mt-auto">
-                <Button className="w-full">
-                  Get Started
-                  <ArrowRight01Icon className="ml-2 size-4" />
-                </Button>
-              </CardFooter>
-            </Card>
+    <MaxWidthWrapper>
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 text-center">
+            <span className="px-3 py-1 text-sm font-semibold text-indigo-600 bg-indigo-100 rounded-full dark:text-indigo-200 dark:bg-indigo-800">
+              Pricing Plans
+            </span>
+            <h2 className="text-pretty text-4xl font-bold lg:text-6xl ">
+              Upgrade Your Restaurant with{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+                AI
+                <SparklesIcon className="size-8 inline-flex text-indigo-600" />
+              </span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 lg:text-xl max-w-2xl">
+              Choose the perfect plan to revolutionize your restaurant
+              operations. Start your 30-day free trial today - no credit card
+              required.
+            </p>
+            <div className="flex items-center gap-3 text-lg bg-white dark:bg-gray-800 py-2 px-4 rounded-xl shadow-md">
+              <span
+                className={`transition-colors duration-200 ${
+                  !isYearly
+                    ? "text-indigo-600 font-semibold"
+                    : "text-gray-600 dark:text-gray-300"
+                }`}
+              >
+                Monthly
+              </span>
+              <Switch
+                onCheckedChange={() => setIsYearly(!isYearly)}
+                checked={isYearly}
+                className="data-[state=checked]:bg-indigo-600"
+              />
+              <span
+                className={`transition-colors duration-200 ${
+                  isYearly
+                    ? "text-indigo-600 font-semibold"
+                    : "text-gray-600 dark:text-gray-300"
+                }`}
+              >
+                Yearly (Save 20%)
+              </span>
+            </div>
+            <div className="flex flex-col items-stretch gap-8 lg:flex-row">
+              {plans.map((plan, index) => (
+                <Card
+                  key={plan.name}
+                  className={`flex w-full lg:w-1/3 flex-col justify-between text-left transition-all duration-300 hover:shadow-xl ${
+                    plan.name === "Growth"
+                      ? "border-2 border-indigo-600 shadow-lg"
+                      : ""
+                  }`}
+                >
+                  <CardHeader>
+                    {plan.name === "Growth" && (
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                      </div>
+                    )}
+                    <CardTitle className="text-2xl font-bold">
+                      {plan.icon}
+                      {plan.name}
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground">
+                      {plan.description}
+                    </p>
+                    <div className="mt-4 flex items-start">
+                      <span className="ml-2 text-xl mr-1 font-bold line-through text-muted-foreground">
+                        {plan.originalPrice}
+                      </span>
+                      <span className="text-4xl font-bold">{plan.price}</span>
+                      <span className="text-muted-foreground">/month</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Billed {plan.billingPeriod}
+                    </p>
+                  </CardHeader>
+                  <CardContent>
+                    <Separator className="mb-6" />
+                    <ul className="space-y-4">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-center gap-2"
+                        >
+                          <CircleCheck className="size-5 text-green-500" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                  <CardFooter className="mt-auto">
+                    <Button
+                      className={`w-full ${
+                        plan.name === "Growth"
+                          ? "bg-indigo-600 hover:bg-indigo-700"
+                          : "bg-gray-200 hover:bg-indigo-700 text-gray-800"
+                      } text-white`}
+                    >
+                      {plan.name === "Growth"
+                        ? "Get Started"
+                        : "Start Free Trial"}
+                      <ArrowRight01Icon className="ml-2 size-5" />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground mt-8">
+              All plans include a 30-day money-back guarantee and a free 30-day
+              trial. Upgrade, downgrade, or cancel anytime.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MaxWidthWrapper>
   );
 }

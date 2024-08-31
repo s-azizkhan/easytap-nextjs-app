@@ -10,6 +10,7 @@ import {
   IconTerminal2,
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import MaxWidthWrapper from "../shared/max-width-wrapper";
 
 const Features = () => {
   const features = [
@@ -113,30 +114,32 @@ const Feature = ({
 };
 export default function FeatureSection() {
   return (
-    <section className="py-14" id="feature-section">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-14">
-          <span className="py-1.5 px-5 bg-indigo-100 dark:bg-indigo-900 rounded-full text-xs font-semibold text-indigo-600 dark:text-indigo-300 text-center inline-block mb-4 transition-all duration-300 hover:bg-indigo-200 dark:hover:bg-indigo-800">
-            Features
-          </span>
-          <h2 className="text-4xl font-extrabold md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-8">
-            <span className="block mb-2">
-              Transform Your Hospitality Business
+    <MaxWidthWrapper>
+      <section className="py-14" id="feature-section">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <span className="py-1.5 px-5 bg-indigo-100 dark:bg-indigo-900 rounded-full text-xs font-semibold text-indigo-600 dark:text-indigo-300 text-center inline-block mb-4 transition-all duration-300 hover:bg-indigo-200 dark:hover:bg-indigo-800">
+              Features
             </span>
-            <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center">
-              with our AI-Powered Menu & Operations
-              <SparklesIcon className="size-7 ml-2 text-purple-600" />
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Harness the power of AI to streamline your restaurant operations.
-            Our AI-enhanced management system intelligently handles menus,
-            orders, and feedback, elevating your business to new heights of
-            efficiency and customer satisfaction.
-          </p>
+            <h2 className="text-4xl font-extrabold md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-8">
+              <span className="block mb-2">
+                Transform Your Hospitality Business
+              </span>
+              <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center">
+                with our AI-Powered Menu & Operations
+                <SparklesIcon className="size-7 ml-2 text-purple-600" />
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Harness the power of AI to streamline your restaurant operations.
+              Our AI-enhanced management system intelligently handles menus,
+              orders, and feedback, elevating your business to new heights of
+              efficiency and customer satisfaction.
+            </p>
+          </div>
+          <Features />
         </div>
-        <Features />
-      </div>
-    </section>
+      </section>
+    </MaxWidthWrapper>
   );
 }

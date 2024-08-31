@@ -277,7 +277,7 @@ const MobileNavigation = () => {
   );
 };
 
-export default function PageHeader() {
+export default function PageNavbar() {
   return (
     <>
       <header className="h-16 sticky lg:top-5 top-0 z-50 w-full">
