@@ -63,7 +63,16 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.bg-dotted {
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  background-image: radial-gradient(#dfdfdf 1px, transparent 1px);
+  background-size: 35px 35px;
 }
