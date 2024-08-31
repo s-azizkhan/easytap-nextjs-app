@@ -1,5 +1,5 @@
 "use client";
-import PricingSection from "../_components/pricing-section";
+import PricingSection from "../../components/section/pricing-section";
 
 export default function LoginPage() {
   return <PricingSection />;

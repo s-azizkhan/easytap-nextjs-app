@@ -1,10 +1,10 @@
 "use client";
-import HeroSection from "./_components/hero-section";
-import FeatureSection from "./_components/feature-section";
-import TestimonialSection from "./_components/testimonial-section";
-import PricingSection from "./_components/pricing-section";
-import FaqSection from "./_components/faq-section";
-import GenerateMenuCtaSection from "./_components/generate-menu-cta-section";
+import HeroSection from "../components/section/hero-section";
+import FeatureSection from "../components/section/feature-section";
+import TestimonialSection from "../components/section/testimonial-section";
+import PricingSection from "../components/section/pricing-section";
+import FaqSection from "../components/section/faq-section";
+import GenerateMenuCtaSection from "../components/section/generate-menu-cta-section";
 
 export default function Home() {
   return (

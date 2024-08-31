@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
-import PageHeader from "@/components/page-header";
-import PageFooter from "@/components/page-footer";
+import PageHeader from "@/components/shared/page-header";
+import PageFooter from "@/components/shared/page-footer";
 import { Providers } from "../../components/Providers";
 
 const bricolage = Bricolage_Grotesque({

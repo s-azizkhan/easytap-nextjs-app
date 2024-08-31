@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "illustrations.popsy.co",
+      },
+      {
+        protocol: "https",
+        hostname: "www.shadcnblocks.com",
+      },
     ],
   },
 };
