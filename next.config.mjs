@@ -18,6 +18,15 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.shadcnblocks.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
     ],
   },
 };

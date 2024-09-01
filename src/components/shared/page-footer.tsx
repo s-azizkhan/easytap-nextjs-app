@@ -84,13 +84,13 @@ export default function PageFooter() {
                   href="#"
                   className="inline-flex rounded-lg bg-primary p-3 justify-center items-center transition-transform hover:scale-105"
                 >
-                  <FaApple className="size-7 text-white" />
+                  <FaApple className="size-7 text-white dark:text-white" />
                 </Link>
                 <Link
                   href="#"
                   className="inline-flex rounded-lg bg-primary p-3 justify-center items-center transition-transform hover:scale-105"
                 >
-                  <FaGooglePlay className="size-7 text-white" />
+                  <FaGooglePlay className="size-7 text-white dark:text-white" />
                 </Link>
               </div>
             </motion.div>
