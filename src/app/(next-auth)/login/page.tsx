@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -7,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import LoginForm from "./Form";
 import { APP_NAME } from "@/config/app.config";
+import { Suspense } from "react";
 
 export default function LoginPage() {
   return (
@@ -17,17 +20,19 @@ export default function LoginPage() {
             {`Welcome to ${APP_NAME}`}
           </p>
 
-          <Card className="mx-auto max-w-sm w-full">
-            <CardHeader>
-              <CardTitle className="text-xl">Log in</CardTitle>
-              <CardDescription>
-                Enter your information to login.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <LoginForm />
-            </CardContent>
-          </Card>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Card className="mx-auto max-w-sm w-full">
+              <CardHeader>
+                <CardTitle className="text-xl">Log in</CardTitle>
+                <CardDescription>
+                  Enter your information to login.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <LoginForm />
+              </CardContent>
+            </Card>
+          </Suspense>
         </div>
       </div>
     </section>
