@@ -139,19 +139,19 @@ const RegisterForm = () => {
                     />
                   </FormControl>
                   <FormDescription>
-                    Please confirm your password
+                    Please confirm your password.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button disabled={isLoading} type="submit" className="w-full">
-              Create an account
+              {isLoading ? "Creating account..." : "Create an account"}
             </Button>
 
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
-              <Link href="/login" className="underline">
+              <Link href="/login" className="underline text-primary">
                 Sign in
               </Link>
             </div>
