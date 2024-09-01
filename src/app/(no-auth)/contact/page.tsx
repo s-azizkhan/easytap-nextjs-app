@@ -6,31 +6,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  AwardIcon,
-  ClockIcon,
-  HeadphonesIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-  RocketIcon,
-  ThumbsUpIcon,
-} from "lucide-react";
+import { PhoneIcon } from "lucide-react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import ContactForm from "./Form";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Award01Icon,
+  Clock01Icon,
+  Mail01Icon,
+  MapPinpoint01Icon,
   Rocket01Icon,
-  ThumbsUpEllipseIcon,
+  ThumbsUpIcon,
 } from "hugeicons-react";
-import { IconHeadphones, IconMoodHappy } from "@tabler/icons-react";
+import { IconHeadphones } from "@tabler/icons-react";
 import { APP_NAME } from "@/config/app.config";
 
 export default function ContactPage() {
-  const { theme } = useTheme();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
@@ -87,7 +79,7 @@ export default function ContactPage() {
               >
                 {[
                   {
-                    icon: MailIcon,
+                    icon: Mail01Icon,
                     title: "Email",
                     content: "info@easytap.ai",
                   },
@@ -97,12 +89,12 @@ export default function ContactPage() {
                     content: "+1 (800) 123-4567",
                   },
                   {
-                    icon: MapPinIcon,
+                    icon: MapPinpoint01Icon,
                     title: "Address",
                     content: "123 AI Boulevard, Tech City, TC 12345",
                   },
                   {
-                    icon: ClockIcon,
+                    icon: Clock01Icon,
                     title: "Hours",
                     content: "24/7 - Always here for you",
                   },

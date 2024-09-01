@@ -4,6 +4,7 @@ import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import ContinueWithGoogleBtn from "@/components/continue-with-google-btn";
 
 const formSchema = z.object({
@@ -43,6 +43,8 @@ const LoginForm = () => {
   });
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const data = await signIn("credentials", {
@@ -57,7 +59,7 @@ const LoginForm = () => {
       toast.success("Logged in successfully");
       // reset the form
       form.reset();
-      router.push("/");
+      router.push(callbackUrl);
     }
   }
 
