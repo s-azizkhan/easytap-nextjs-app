@@ -1,3 +1,4 @@
+"use client";
 import { SparklesIcon } from "hugeicons-react";
 import {
   IconAdjustmentsBolt,
