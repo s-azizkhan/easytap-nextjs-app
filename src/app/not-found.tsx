@@ -11,7 +11,7 @@ export default function NotFound() {
             404
           </h1>
           <p className="mb-10 text-4xl font-bold text-gray-800 dark:text-gray-200">
-            Oops! You've reached a dead end.
+            {`Oops! You've reached a dead end.`}
           </p>
           <Link
             href="/"
@@ -21,7 +21,7 @@ export default function NotFound() {
             Back to Homepage
           </Link>
           <p className="mt-10 text-xl text-gray-600 dark:text-gray-400">
-            The page you're looking for doesn't exist or has been moved.
+            {`The page you're looking for doesn't exist or has been moved.`}
           </p>
         </div>
         <div className="md:w-1/2 flex justify-center">

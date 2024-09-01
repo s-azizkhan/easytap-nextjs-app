@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -44,12 +44,15 @@ export function GridPattern({
   }
 
   // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }));
-  }
+  const generateSquares = useCallback(
+    (count: number) => {
+      return Array.from({ length: count }, (_, i) => ({
+        id: i,
+        pos: getPos(),
+      }));
+    },
+    [dimensions, getPos]
+  );
 
   // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
@@ -60,8 +63,8 @@ export function GridPattern({
               ...sq,
               pos: getPos(),
             }
-          : sq,
-      ),
+          : sq
+      )
     );
   };
 
@@ -70,7 +73,7 @@ export function GridPattern({
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
-  }, [dimensions, numSquares]);
+  }, [dimensions, numSquares, generateSquares]);
 
   // Resize observer to update container dimensions
   useEffect(() => {
@@ -88,8 +91,9 @@ export function GridPattern({
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      const container = containerRef.current;
+      if (container) {
+        resizeObserver.unobserve(container);
       }
     };
   }, [containerRef]);
@@ -100,7 +104,7 @@ export function GridPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
-        className,
+        className
       )}
       {...props}
     >

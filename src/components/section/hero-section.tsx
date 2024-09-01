@@ -10,6 +10,7 @@ import Link from "next/link";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 import { motion } from "framer-motion";
 import { APP_NAME } from "@/config/app.config";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -25,28 +26,29 @@ export default function HeroSection() {
         transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
       >
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
-          <img
+          <Image
             src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
             alt="Decorative image"
             className="w-96 h-auto dark:hidden"
+            loading="lazy"
           />
         </div>
         <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
-          <img
+          <Image
             src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
             alt="Decorative image"
             className="w-96 h-auto dark:hidden"
           />
         </div>
         <div className="absolute left-0 top-0 lg:hidden">
-          <img
+          <Image
             src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
             alt="Decorative image"
             className="w-32 h-auto opacity-70 dark:hidden"
           />
         </div>
         <div className="absolute right-0 bottom-0 lg:hidden">
-          <img
+          <Image
             src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
             alt="Decorative image"
             className="w-32 h-auto opacity-70 dark:hidden"
@@ -60,7 +62,7 @@ export default function HeroSection() {
         transition={{ delay: 0.1, duration: 0.5 }}
         className="absolute right-0 bottom-0 lg:hidden"
       >
-        <img
+        <Image
           src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
           alt="Decorative image"
           className="w-32 h-auto opacity-70 dark:hidden"
