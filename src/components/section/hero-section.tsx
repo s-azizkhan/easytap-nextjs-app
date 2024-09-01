@@ -8,41 +8,71 @@ import {
 } from "hugeicons-react";
 import Link from "next/link";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <div className="relative flex w-full items-center justify-center overflow-hidden py-10 lg:py-0">
-      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
-        <img
-          src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
-          alt="Decorative image"
-          className="w-96 h-auto dark:hidden"
-        />
-      </div>
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="relative flex w-full items-center justify-center overflow-hidden py-10 lg:py-0"
+    >
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+      >
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
+          <img
+            src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
+            alt="Decorative image"
+            className="w-96 h-auto dark:hidden"
+          />
+        </div>
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
+          <img
+            src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
+            alt="Decorative image"
+            className="w-96 h-auto dark:hidden"
+          />
+        </div>
+        <div className="absolute left-0 top-0 lg:hidden">
+          <img
+            src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
+            alt="Decorative image"
+            className="w-32 h-auto opacity-70 dark:hidden"
+          />
+        </div>
+        <div className="absolute right-0 bottom-0 lg:hidden">
+          <img
+            src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
+            alt="Decorative image"
+            className="w-32 h-auto opacity-70 dark:hidden"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ x: 50, opacity: 0 }}
+        animate={{ x: 0, opacity: 0.7 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+        className="absolute right-0 bottom-0 lg:hidden"
+      >
         <img
           src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
           alt="Decorative image"
-          className="w-96 h-auto dark:hidden"
-        />
-      </div>
-      <div className="absolute left-0 top-0 lg:hidden">
-        <img
-          src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
-          alt="Decorative image"
           className="w-32 h-auto opacity-70 dark:hidden"
         />
-      </div>
-      <div className="absolute right-0 bottom-0 lg:hidden">
-        <img
-          src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
-          alt="Decorative image"
-          className="w-32 h-auto opacity-70 dark:hidden"
-        />
-      </div>
+      </motion.div>
       <section className="pb-14 lg:py-24" id="hero-section">
         <div className="container text-center px-4 sm:px-6 lg:px-8">
-          <div className="z-10 mb-8 flex items-center justify-center">
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="z-10 mb-8 flex items-center justify-center"
+          >
             <Link href="/register" className="inline-flex">
               <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#737373_50%,#171717_100%)]"></span>
@@ -54,9 +84,14 @@ export default function HeroSection() {
                 </div>
               </span>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="mx-auto flex max-w-screen-lg flex-col gap-8">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mx-auto flex max-w-screen-lg flex-col gap-8"
+          >
             <h1 className="flex flex-col justify-center items-center text-center text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-50">
               Extend your hospitality
               <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center text-3xl sm:text-4xl lg:text-6xl mt-2">
@@ -69,8 +104,13 @@ export default function HeroSection() {
               hospitality experience, making it effortless to create stunning
               digital menus and enhance customer engagement.
             </p>
-          </div>
-          <div className="mt-8 lg:mt-12 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+          </motion.div>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-8 lg:mt-12 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+          >
             <Link href="/register">
               <AnimatedGradientText className="rounded-xl inline-flex items-center bg-black text-white text-base sm:text-lg font-semibold px-4 py-2">
                 Get Started
@@ -87,8 +127,13 @@ export default function HeroSection() {
                 <ArrowRight01Icon className="ml-2 size-4 sm:size-5" />
               </Button>
             </Link>
-          </div>
-          <div className="mx-auto mt-12 sm:mt-16 flex w-fit flex-col items-center gap-6 sm:flex-row">
+          </motion.div>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mx-auto mt-12 sm:mt-16 flex w-fit flex-col items-center gap-6 sm:flex-row"
+          >
             <span className="mx-4 inline-flex items-center -space-x-4">
               <Avatar className="size-10 sm:size-14 border-2 border-white dark:border-gray-800">
                 <AvatarImage
@@ -134,9 +179,9 @@ export default function HeroSection() {
                 from 200+ satisfied Hotels , Cafes & Restaurants
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }

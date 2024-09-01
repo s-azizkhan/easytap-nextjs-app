@@ -11,8 +11,14 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import MaxWidthWrapper from "../shared/max-width-wrapper";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Features = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   const features = [
     {
       title: "Streamlined Ordering",
@@ -64,11 +70,17 @@ const Features = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 mx-auto">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.5, staggerChildren: 0.1 }}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 mx-auto"
+    >
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
-    </div>
+    </motion.div>
   );
 };
 
@@ -84,9 +96,12 @@ const Feature = ({
   index: number;
 }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
+        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
         index < 4 && "lg:border-b dark:border-neutral-800"
       )}
@@ -109,37 +124,71 @@ const Feature = ({
       <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 };
+
 export default function FeatureSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   return (
     <MaxWidthWrapper>
-      <section className="py-14" id="feature-section">
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="py-14"
+        id="feature-section"
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center lg:mb-5"
+          >
             <span className="py-1.5 px-5 bg-indigo-100 dark:bg-indigo-900 rounded-full text-xs font-semibold text-indigo-600 dark:text-indigo-300 text-center inline-block mb-4 transition-all duration-300 hover:bg-indigo-200 dark:hover:bg-indigo-800">
               Features
             </span>
-            <h2 className="text-4xl font-extrabold md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-8">
-              <span className="block mb-2">
-                Transform Your Hospitality Business
-              </span>
-              <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center">
-                with our AI-Powered Menu & Operations
-                <SparklesIcon className="size-7 ml-2 text-purple-600" />
-              </span>
+            <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-6 sm:mb-8">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="block mb-2"
+              >
+                The Future of Hospitality is Here
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center flex-wrap justify-center"
+              >
+                with AI
+                <SparklesIcon className="size-6 sm:size-7 ml-2 text-purple-600 animate-pulse" />
+              </motion.span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Harness the power of AI to streamline your restaurant operations.
-              Our AI-enhanced management system intelligently handles menus,
-              orders, and feedback, elevating your business to new heights of
-              efficiency and customer satisfaction.
-            </p>
-          </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+            >
+              Discover how our AI-powered management system can transform your
+              business. Enjoy enhanced efficiency, improved customer
+              satisfaction, and unparalleled insights into your operations.
+            </motion.p>
+          </motion.div>
           <Features />
         </div>
-      </section>
+      </motion.section>
     </MaxWidthWrapper>
   );
 }

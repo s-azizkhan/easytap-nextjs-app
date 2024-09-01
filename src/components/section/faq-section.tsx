@@ -7,8 +7,14 @@ import {
 
 import MaxWidthWrapper from "../shared/max-width-wrapper";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function FaqSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   const faqs = [
     {
       question: "What is EasyTap?",
@@ -35,9 +41,20 @@ export default function FaqSection() {
 
   return (
     <MaxWidthWrapper>
-      <section className="py-24">
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="py-24"
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center mb-16"
+          >
             <span className="py-1.5 px-5 bg-indigo-100 dark:bg-indigo-900 rounded-full text-xs font-semibold text-indigo-600 dark:text-indigo-300 inline-block mb-4 transition-all duration-300 hover:bg-indigo-200 dark:hover:bg-indigo-800 shadow-sm">
               FAQ
             </span>
@@ -48,33 +65,47 @@ export default function FaqSection() {
               Get quick answers to common questions about EasyTap and discover
               how it can revolutionize your restaurant operations.
             </p>
-          </div>
-          <div className="max-w-4xl mx-auto space-y-4">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="max-w-4xl mx-auto space-y-4"
+          >
             {faqs.map((faq, index) => (
-              <Accordion key={index} type="single" collapsible>
-                <AccordionItem
-                  value={`item-${index}`}
-                  className="border border-indigo-100 dark:border-indigo-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg"
-                >
-                  <AccordionTrigger className="hover:bg-indigo-50 dark:hover:bg-indigo-900/50 px-6 py-4 text-left">
-                    <div className="flex items-center">
-                      <QuestionMarkCircledIcon className="h-6 w-6 text-indigo-600 dark:text-indigo-400 mr-3 flex-shrink-0" />
-                      <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                        {faq.question}
-                      </span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 py-4 bg-white dark:bg-gray-800">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+              >
+                <Accordion type="single" collapsible>
+                  <AccordionItem
+                    value={`item-${index}`}
+                    className="border border-indigo-100 dark:border-indigo-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg"
+                  >
+                    <AccordionTrigger className="hover:bg-indigo-50 dark:hover:bg-indigo-900/50 px-6 py-4 text-left">
+                      <div className="flex items-center">
+                        <QuestionMarkCircledIcon className="h-6 w-6 text-indigo-600 dark:text-indigo-400 mr-3 flex-shrink-0" />
+                        <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                          {faq.question}
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 py-4 bg-white dark:bg-gray-800">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </MaxWidthWrapper>
   );
 }

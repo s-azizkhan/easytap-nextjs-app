@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const CheckIcon = () => (
   <svg
@@ -28,36 +29,74 @@ export default function GenerateMenuCtaSection() {
     "User-Friendly Interface",
   ];
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 },
+    },
+  };
+
   return (
-    <section className="pb-24" id="generate-menu-cta-section">
+    <section className="pb-24" id="generate-menu-cta-section" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="flex w-full flex-col gap-12 overflow-hidden rounded-3xl bg-background shadow-xl p-8 md:p-12 lg:flex-row lg:items-center lg:p-16 transition-all duration-300 hover:shadow-2xl"
         >
-          <div className="flex-1 space-y-6">
-            <h3 className="text-3xl font-bold md:text-4xl lg:text-5xl text-gray-900 dark:text-white">
+          <motion.div variants={itemVariants} className="flex-1 space-y-6">
+            <motion.h3
+              variants={itemVariants}
+              className="text-3xl font-bold md:text-4xl lg:text-5xl text-gray-900 dark:text-white"
+            >
               Transform Your Menu with AI
-            </h3>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+            </motion.h3>
+            <motion.p
+              variants={itemVariants}
+              className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl"
+            >
               Elevate your dining experience with our AI-powered menu generator.
               Create stunning, personalized menus in seconds.
-            </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            </motion.p>
+            <motion.ul
+              variants={itemVariants}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4"
+            >
               {features.map((feature, index) => (
-                <li
+                <motion.li
                   key={index}
+                  variants={itemVariants}
                   className="flex items-center text-gray-700 dark:text-gray-300"
                 >
                   <CheckIcon />
                   {feature}
-                </li>
+                </motion.li>
               ))}
-            </ul>
-          </div>
-          <div className="flex shrink-0 flex-col gap-4 sm:flex-row">
+            </motion.ul>
+          </motion.div>
+          <motion.div
+            variants={itemVariants}
+            className="flex shrink-0 flex-col gap-4 sm:flex-row"
+          >
             <Link href="/features" passHref>
               <Button
                 variant="outline"
@@ -73,7 +112,7 @@ export default function GenerateMenuCtaSection() {
                 <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

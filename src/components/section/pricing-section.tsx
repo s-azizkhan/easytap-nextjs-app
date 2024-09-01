@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, CircleCheck } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import {
   ArrowRight01Icon,
@@ -18,10 +18,13 @@ import {
   SparklesIcon,
 } from "hugeicons-react";
 import MaxWidthWrapper from "../shared/max-width-wrapper";
-import { IconGrowth } from "@tabler/icons-react";
+import { motion, useInView } from "framer-motion";
 
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   const plans = [
     {
       name: "Starter",
@@ -66,11 +69,23 @@ export default function PricingSection() {
       ],
     },
   ];
+
   return (
     <MaxWidthWrapper>
-      <section className="py-24">
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="py-24"
+      >
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mx-auto flex max-w-6xl flex-col items-center gap-8 text-center"
+          >
             <span className="px-3 py-1 text-sm font-semibold text-indigo-600 bg-indigo-100 rounded-full dark:text-indigo-200 dark:bg-indigo-800">
               Pricing Plans
             </span>
@@ -78,7 +93,7 @@ export default function PricingSection() {
               Upgrade Your Restaurant with{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
                 AI
-                <SparklesIcon className="size-8 inline-flex text-indigo-600" />
+                <SparklesIcon className="size-8 inline-flex text-indigo-600 animate-pulse" />
               </span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 lg:text-xl max-w-2xl">
@@ -86,7 +101,14 @@ export default function PricingSection() {
               operations. Start your 30-day free trial today - no credit card
               required.
             </p>
-            <div className="flex items-center gap-3 text-lg bg-white dark:bg-gray-800 py-2 px-4 rounded-xl shadow-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={
+                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+              }
+              transition={{ duration: 0.3, delay: 0.4 }}
+              className="flex items-center gap-3 text-lg bg-background py-2 px-4 rounded-xl shadow-md"
+            >
               <span
                 className={`transition-colors duration-200 ${
                   !isYearly
@@ -99,7 +121,7 @@ export default function PricingSection() {
               <Switch
                 onCheckedChange={() => setIsYearly(!isYearly)}
                 checked={isYearly}
-                className="data-[state=checked]:bg-indigo-600"
+                className="data-[state=checked]:bg-indigo-600 dark:bg-white"
               />
               <span
                 className={`transition-colors duration-200 ${
@@ -108,13 +130,13 @@ export default function PricingSection() {
                     : "text-gray-600 dark:text-gray-300"
                 }`}
               >
-                Yearly (Save 20%)
+                Yearly
               </span>
-            </div>
+            </motion.div>
             <div className="flex flex-col items-stretch gap-8 lg:flex-row">
               {plans.map((plan, index) => (
                 <Card
-                  key={plan.name}
+                  key={index}
                   className={`flex w-full lg:w-1/3 flex-col justify-between text-left transition-all duration-300 hover:shadow-xl ${
                     plan.name === "Growth"
                       ? "border-2 border-indigo-600 shadow-lg"
@@ -176,13 +198,18 @@ export default function PricingSection() {
                 </Card>
               ))}
             </div>
-            <p className="text-sm text-muted-foreground mt-8">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="text-sm text-muted-foreground mt-8"
+            >
               All plans include a 30-day money-back guarantee and a free 30-day
               trial. Upgrade, downgrade, or cancel anytime.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </MaxWidthWrapper>
   );
 }
