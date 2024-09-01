@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import RegisterForm from "./Form";
+import { APP_NAME } from "@/config/app.config";
 
 export default function RegisterPage() {
   return (
@@ -13,7 +14,7 @@ export default function RegisterPage() {
       <div className="container">
         <div className="flex flex-col gap-4">
           <p className="text-3xl font-bold inline-flex justify-center">
-            Welcome to EasyTap
+            Welcome to {APP_NAME}
           </p>
           <Card className="mx-auto max-w-sm w-full">
             <CardHeader>

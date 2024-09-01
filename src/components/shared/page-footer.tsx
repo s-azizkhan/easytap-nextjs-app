@@ -10,6 +10,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { APP_NAME } from "@/config/app.config";
 
 const sections = [
   {
@@ -65,7 +66,7 @@ export default function PageFooter() {
                   className="h-10 w-auto mr-3"
                 /> */}
                 <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-                  EasyTap
+                  {APP_NAME}
                 </span>
               </Link>
             </motion.div>
@@ -155,7 +156,7 @@ export default function PageFooter() {
           </div>
           <Separator className="my-10" />
           <p className="text-sm text-center text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} EasyTap. All rights reserved.
+            © {new Date().getFullYear()} {APP_NAME}. All rights reserved.
           </p>
         </footer>
       </div>

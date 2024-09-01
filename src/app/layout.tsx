@@ -5,6 +5,7 @@ import "./globals.css";
 import PageNavbar from "@/components/shared/page-navbar";
 import PageFooter from "@/components/shared/page-footer";
 import { Providers } from "../../components/Providers";
+import { APP_NAME } from "@/config/app.config";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin", "latin-ext", "vietnamese"],
@@ -12,8 +13,8 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "EasyTap | Extend your hospitality with EasyTap",
-  description: "Extend your hospitality with EasyTap",
+  title: `${APP_NAME} | Extend your hospitality with ${APP_NAME}`,
+  description: `Extend your hospitality with ${APP_NAME}`,
 };
 
 export default function RootLayout({

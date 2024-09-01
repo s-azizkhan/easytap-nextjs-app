@@ -26,6 +26,7 @@ import {
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
 import { AiImageIcon } from "hugeicons-react";
+import { APP_NAME } from "@/config/app.config";
 
 const subMenuItemsTwo = [
   {
@@ -57,7 +58,7 @@ const DesktopNavigation = () => {
         <Link href="/">
           <div className="flex items-center gap-2">
             {/* TODO: add logo */}
-            <span className="text-xl font-bold">EasyTap</span>
+            <span className="text-xl font-bold">{APP_NAME}</span>
           </div>
         </Link>
       </div>
@@ -150,7 +151,7 @@ const MobileNavigation = () => {
       <Link href="/">
         <div className="flex items-center gap-2">
           {/* TODO: add logo */}
-          <span className="text-xl font-bold">EasyTap</span>
+          <span className="text-xl font-bold">{APP_NAME}</span>
         </div>
       </Link>
       <Link href="/register">
@@ -172,7 +173,7 @@ const MobileNavigation = () => {
               <Link href="/">
                 <div className="flex items-center gap-2">
                   {/* TODO: add logo */}
-                  <span className="text-xl font-bold">EasyTap</span>
+                  <span className="text-xl font-bold">{APP_NAME}</span>
                 </div>
               </Link>
             </SheetTitle>

@@ -19,158 +19,205 @@ import {
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import ContactForm from "./Form";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import {
+  Award01Icon,
+  Rocket01Icon,
+  ThumbsUpEllipseIcon,
+} from "hugeicons-react";
+import { IconHeadphones, IconMoodHappy } from "@tabler/icons-react";
+import { APP_NAME } from "@/config/app.config";
 
 export default function ContactPage() {
   const { theme } = useTheme();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
-    <section className="pb-24 pt-16">
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className="pb-24 pt-16"
+    >
       <div className="container">
         <div className="w-full max-w-6xl mx-auto px-4 md:px-0 py-12 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            <div className="space-y-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
+            variants={containerVariants}
+          >
+            <motion.div className="space-y-8" variants={itemVariants}>
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold">Get in Touch</h1>
-                <p className="text-muted-foreground mt-2 text-lg md:text-xl">
-                  {
-                    "Have a question or want to work together? Fill out the form below and we'll get back to you as soon as possible."
-                  }
+                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-4">
+                  Get in Touch
+                </h1>
+                <p className="text-muted-foreground mt-2 text-lg md:text-xl leading-relaxed">
+                  Have a question or want to work together? We're here to help.
+                  Reach out to us and we'll get back to you as soon as possible.
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <MailIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-muted-foreground">info@acme.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <PhoneIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <MapPinIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Address</h3>
-                    <p className="text-muted-foreground">
-                      123 Main St, Anytown USA
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <ClockIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Hours</h3>
-                    <p className="text-muted-foreground">
-                      Mon-Fri: 9am - 5pm, Sat-Sun: Closed
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-3xl font-bold">
-                  Send Us a Message
-                </CardTitle>
-                <CardDescription className="text-md">
+              <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                variants={containerVariants}
+              >
+                {[
                   {
-                    "Have a question or want to work together? Fill out the form below and we'll get back to you with in 1 business day."
-                  }
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ContactForm />
-              </CardContent>
-            </Card>
-          </div>
-          <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            <div
-              className={`p-6 ${
-                theme === "dark"
-                  ? "bg-white rounded-lg shadow-md shadow-white"
-                  : ""
-              }`}
+                    icon: MailIcon,
+                    title: "Email",
+                    content: "info@easytap.ai",
+                  },
+                  {
+                    icon: PhoneIcon,
+                    title: "Phone",
+                    content: "+1 (800) 123-4567",
+                  },
+                  {
+                    icon: MapPinIcon,
+                    title: "Address",
+                    content: "123 AI Boulevard, Tech City, TC 12345",
+                  },
+                  {
+                    icon: ClockIcon,
+                    title: "Hours",
+                    content: "24/7 - Always here for you",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-4 bg-card p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+                    variants={itemVariants}
+                  >
+                    <div className="bg-gradient-to-r from-primary to-purple-600 rounded-full p-3 shadow-lg">
+                      <item.icon className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">
+                        {item.content}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Card className="shadow-xl hover:shadow-2xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                    Send Us a Message
+                  </CardTitle>
+                  <CardDescription className="text-md">
+                    We're excited to hear from you! Fill out the form below and
+                    we'll get back to you within one business day.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ContactForm />
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="mt-24 lg:mt-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+            variants={containerVariants}
+          >
+            <motion.div
+              className="p-6 bg-white rounded-2xl shadow-xl overflow-hidden"
+              variants={itemVariants}
             >
               <Image
-                src="https://illustrations.popsy.co/gray/shaking-hands.svg"
+                src="https://illustrations.popsy.co/violet/shaking-hands.svg"
                 alt="Contact Us"
                 width={600}
                 height={400}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover transition-transform duration-300 hover:scale-105"
                 style={{ aspectRatio: "600/400", objectFit: "cover" }}
               />
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Why Choose Us?</h2>
-              <p className="text-muted-foreground text-lg md:text-xl">
-                At Acme, we pride ourselves on our commitment to excellence and
-                customer satisfaction. Our team of experts is dedicated to
-                providing you with the best possible experience.
+            </motion.div>
+            <motion.div className="space-y-8" variants={itemVariants}>
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                {`Why Choose ${APP_NAME}?`}
+              </h2>
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+                At {APP_NAME}, we're committed to revolutionizing your
+                restaurant experience. Our team of experts is dedicated to
+                providing cutting-edge AI solutions that elevate your business
+                to new heights.
               </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <AwardIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Award-Winning</h3>
-                    <p className="text-muted-foreground">
-                      Recognized for our exceptional service.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <HeadphonesIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">24/7 Support</h3>
-                    <p className="text-muted-foreground">
-                      Our team is available to assist you anytime.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <RocketIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Fast Turnaround</h3>
-                    <p className="text-muted-foreground">
-                      We work efficiently to deliver results quickly.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <ThumbsUpIcon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Satisfied Clients</h3>
-                    <p className="text-muted-foreground">
-                      Our clients rave about our exceptional service.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                variants={containerVariants}
+              >
+                {[
+                  {
+                    icon: Award01Icon,
+                    title: "Award-Winning",
+                    content: "Exceptional service and innovation",
+                  },
+                  {
+                    icon: IconHeadphones,
+                    title: "24/7 Support",
+                    content: "Always available to assist you",
+                  },
+                  {
+                    icon: Rocket01Icon,
+                    title: "Fast Turnaround",
+                    content: "Efficient delivery of results",
+                  },
+                  {
+                    icon: ThumbsUpIcon,
+                    title: "Client Satisfaction",
+                    content: "Consistently praised service",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-3 bg-card p-4 rounded-lg"
+                    variants={itemVariants}
+                  >
+                    <div className="bg-gradient-to-r from-primary to-purple-600 rounded-full p-2">
+                      <item.icon className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">
+                        {item.content}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

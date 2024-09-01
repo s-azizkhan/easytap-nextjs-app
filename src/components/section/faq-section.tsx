@@ -10,6 +10,7 @@ import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { APP_NAME } from "@/config/app.config";
 
 export default function FaqSection() {
   const ref = useRef(null);
@@ -17,25 +18,20 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      question: "What is EasyTap?",
-      answer:
-        "EasyTap is an AI-powered restaurant management system that streamlines menu creation, order processing, and customer feedback analysis.",
+      question: `What is ${APP_NAME}?`,
+      answer: `${APP_NAME} is an AI-powered restaurant management system that streamlines menu creation, order processing, and customer feedback analysis.`,
     },
     {
-      question: "How does EasyTap benefit my restaurant?",
-      answer:
-        "EasyTap enhances operational efficiency, improves customer satisfaction, and provides data-driven insights to optimize your menu and service.",
+      question: `How does ${APP_NAME} benefit my restaurant?`,
+      answer: `${APP_NAME} enhances operational efficiency, improves customer satisfaction, and provides data-driven insights to optimize your menu and service.`,
     },
     {
-      question:
-        "Is EasyTap suitable for all types of restaurants, bars, and cafes?",
-      answer:
-        "Yes, EasyTap is designed to cater to various restaurant sizes and types, from small cafes to large multi-location chains.",
+      question: `Is ${APP_NAME} suitable for all types of restaurants, bars, and cafes?`,
+      answer: `Yes, ${APP_NAME} is designed to cater to various restaurant sizes and types, from small cafes to large multi-location chains.`,
     },
     {
-      question: "How easy is it to implement EasyTap in my restaurant?",
-      answer:
-        "EasyTap offers a user-friendly setup process with dedicated support to ensure a smooth integration into your existing operations.",
+      question: `How easy is it to implement ${APP_NAME} in my restaurant?`,
+      answer: `${APP_NAME} offers a user-friendly setup process with dedicated support to ensure a smooth integration into your existing operations.`,
     },
   ];
 
@@ -62,8 +58,8 @@ export default function FaqSection() {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Get quick answers to common questions about EasyTap and discover
-              how it can revolutionize your restaurant operations.
+              Get quick answers to common questions about {APP_NAME} and
+              discover how it can revolutionize your restaurant operations.
             </p>
           </motion.div>
           <motion.div

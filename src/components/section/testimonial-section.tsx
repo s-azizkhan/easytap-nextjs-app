@@ -10,6 +10,7 @@ import MaxWidthWrapper from "../shared/max-width-wrapper";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { APP_NAME } from "@/config/app.config";
 
 function TestimonialCards() {
   const testimonials = [
@@ -18,8 +19,7 @@ function TestimonialCards() {
       role: "Restaurant Owner",
       company: "Bistro Bliss",
       image: "https://www.shadcnblocks.com/images/block/avatar-1.webp",
-      content:
-        "EasyTap has transformed our restaurant operations. Our menu management is now seamless, and customer feedback has improved significantly!",
+      content: `"${APP_NAME} has transformed our restaurant operations. Our menu management is now seamless, and customer feedback has improved significantly!`,
       rating: 5,
     },
     {
@@ -27,8 +27,7 @@ function TestimonialCards() {
       role: "Café Manager",
       company: "Brew & Chew",
       image: "https://www.shadcnblocks.com/images/block/avatar-2.webp",
-      content:
-        "As a small café, efficiency is key. EasyTap's AI-powered system has streamlined our ordering process and boosted our overall productivity.",
+      content: `"As a small café, efficiency is key. ${APP_NAME}'s AI-powered system has streamlined our ordering process and boosted our overall productivity.`,
       rating: 5,
     },
     {
@@ -36,8 +35,7 @@ function TestimonialCards() {
       role: "Head Chef",
       company: "Fusion Flavors",
       image: "https://www.shadcnblocks.com/images/block/avatar-3.webp",
-      content:
-        "The AI menu suggestions from EasyTap have been a game-changer. It's helped us create innovative dishes that our customers love!",
+      content: `The AI menu suggestions from ${APP_NAME} have been a game-changer. It's helped us create innovative dishes that our customers love!`,
       rating: 4,
     },
   ];
@@ -118,7 +116,7 @@ export default function TestimonialSection() {
             className="max-w-6xl mx-auto text-center"
           >
             <span className="py-1.5 px-5 bg-indigo-100 dark:bg-indigo-900 rounded-full text-xs font-semibold text-indigo-600 dark:text-indigo-300 text-center inline-block mb-4 transition-all duration-300 hover:bg-indigo-200 dark:hover:bg-indigo-800">
-              Why EasyTap?
+              {`Why ${APP_NAME}?`}
             </span>
             <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               The Dining Revolution: Customer Stories

@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 import { motion } from "framer-motion";
+import { APP_NAME } from "@/config/app.config";
 
 export default function HeroSection() {
   return (
@@ -95,12 +96,12 @@ export default function HeroSection() {
             <h1 className="flex flex-col justify-center items-center text-center text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-50">
               Extend your hospitality
               <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center text-3xl sm:text-4xl lg:text-6xl mt-2">
-                with EasyTap AI
+                with {APP_NAME} AI
                 <SparklesIcon className="size-5 sm:size-7 ml-1 text-purple-600" />
               </span>
             </h1>
             <p className="mx-auto max-w-2xl text-sm sm:text-base lg:text-xl leading-relaxed text-muted-foreground">
-              EasyTap is a cutting-edge platform that revolutionizes your
+              {APP_NAME} is a cutting-edge platform that revolutionizes your
               hospitality experience, making it effortless to create stunning
               digital menus and enhance customer engagement.
             </p>
