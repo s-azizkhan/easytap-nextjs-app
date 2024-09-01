@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function DashboardPage() {
   return (
@@ -17,7 +18,9 @@ export default function DashboardPage() {
           <p className="text-sm text-muted-foreground">
             You can start selling as soon as you add a product.
           </p>
-          <Button className="mt-4">Add Product</Button>
+          <Link href="/dashboard/generate-menu">
+            <Button className="mt-4">Generate Menu</Button>
+          </Link>
         </div>
       </div>
     </>

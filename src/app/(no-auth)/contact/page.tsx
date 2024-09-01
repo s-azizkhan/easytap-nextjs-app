@@ -69,8 +69,8 @@ export default function ContactPage() {
                   Get in Touch
                 </h1>
                 <p className="text-muted-foreground mt-2 text-lg md:text-xl leading-relaxed">
-                  Have a question or want to work together? We're here to help.
-                  Reach out to us and we'll get back to you as soon as possible.
+                  {`Have a question or want to work together? We're here to help.
+                  Reach out to us and we'll get back to you as soon as possible.`}
                 </p>
               </div>
               <motion.div
@@ -125,8 +125,8 @@ export default function ContactPage() {
                     Send Us a Message
                   </CardTitle>
                   <CardDescription className="text-md">
-                    We're excited to hear from you! Fill out the form below and
-                    we'll get back to you within one business day.
+                    {`We're excited to hear from you! Fill out the form below and
+                    we'll get back to you within one business day.`}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -158,10 +158,10 @@ export default function ContactPage() {
                 {`Why Choose ${APP_NAME}?`}
               </h2>
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-                At {APP_NAME}, we're committed to revolutionizing your
+                {`At ${APP_NAME}, we're committed to revolutionizing your
                 restaurant experience. Our team of experts is dedicated to
                 providing cutting-edge AI solutions that elevate your business
-                to new heights.
+                to new heights.`}
               </p>
               <motion.div
                 className="grid grid-cols-1 sm:grid-cols-2 gap-4"

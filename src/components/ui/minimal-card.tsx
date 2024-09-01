@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const MinimalCard = React.forwardRef<
   HTMLDivElement,
@@ -35,7 +36,7 @@ const MinimalCardImage = React.forwardRef<
     )}
     {...props}
   >
-    <img
+    <Image
       src={src}
       alt={alt}
       width={200}

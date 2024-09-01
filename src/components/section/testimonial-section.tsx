@@ -72,7 +72,7 @@ function TestimonialCards() {
                 </div>
               </div>
               <MinimalCardDescription className="text-gray-700 dark:text-gray-300 mb-4">
-                "{testimonial.content}"
+                {`"${testimonial.content}"`}
               </MinimalCardDescription>
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
