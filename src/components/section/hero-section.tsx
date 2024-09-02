@@ -7,10 +7,10 @@ import {
   StarIcon,
 } from "hugeicons-react";
 import Link from "next/link";
-import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 import { motion } from "framer-motion";
 import { APP_NAME } from "@/config/app.config";
 import Image from "next/image";
+import WaitListForm from "../shared/wait-list-form";
 
 export default function HeroSection() {
   return (
@@ -31,6 +31,8 @@ export default function HeroSection() {
             alt="Decorative image"
             className="w-96 h-auto dark:hidden"
             loading="lazy"
+            width={1000}
+            height={1000}
           />
         </div>
         <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden lg:block">
@@ -38,6 +40,9 @@ export default function HeroSection() {
             src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
             alt="Decorative image"
             className="w-96 h-auto dark:hidden"
+            loading="lazy"
+            width={1000}
+            height={1000}
           />
         </div>
         <div className="absolute left-0 top-0 lg:hidden">
@@ -45,6 +50,9 @@ export default function HeroSection() {
             src="https://illustrations.popsy.co/violet/chef-serving-food.svg"
             alt="Decorative image"
             className="w-32 h-auto opacity-70 dark:hidden"
+            loading="lazy"
+            width={1000}
+            height={1000}
           />
         </div>
         <div className="absolute right-0 bottom-0 lg:hidden">
@@ -52,6 +60,9 @@ export default function HeroSection() {
             src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
             alt="Decorative image"
             className="w-32 h-auto opacity-70 dark:hidden"
+            loading="lazy"
+            width={1000}
+            height={1000}
           />
         </div>
       </motion.div>
@@ -66,6 +77,9 @@ export default function HeroSection() {
           src="https://illustrations.popsy.co/violet/woman-eating-salad.svg"
           alt="Decorative image"
           className="w-32 h-auto opacity-70 dark:hidden"
+          loading="lazy"
+          width={1000}
+          height={1000}
         />
       </motion.div>
       <section className="pb-14 lg:py-24" id="hero-section">
@@ -82,7 +96,7 @@ export default function HeroSection() {
                 <div className="inline-flex h-full w-full cursor-pointer justify-center rounded-full bg-white px-3 py-1 text-xs font-medium leading-5 text-slate-600 backdrop-blur-xl dark:bg-black dark:text-slate-200 text-">
                   Introducing AI menu ✨
                   <span className="inline-flex items-center pl-2 text-black dark:text-white">
-                    Create now <ArrowRight02Icon className="size-4 ml-2" />
+                    Join now <ArrowRight02Icon className="size-4 ml-2" />
                   </span>
                 </div>
               </span>
@@ -108,23 +122,26 @@ export default function HeroSection() {
               digital menus and enhance customer engagement.
             </p>
           </motion.div>
+
+          <WaitListForm />
+
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-8 lg:mt-12 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+            className="mt-3 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
           >
-            <Link href="/register">
+            {/* <Link href="/register">
               <AnimatedGradientText className="rounded-xl inline-flex items-center bg-black text-white text-base sm:text-lg font-semibold px-4 py-2">
                 Get Started
                 <ArrowRight01Icon className="ml-2 size-4 sm:size-5" />
               </AnimatedGradientText>
-            </Link>
+            </Link> */}
             <Link href="#feature-section">
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-xl text-base sm:text-lg font-semibold w-full sm:w-auto"
+                className="rounded-xl w-full sm:w-auto"
               >
                 Explore Features
                 <ArrowRight01Icon className="ml-2 size-4 sm:size-5" />
