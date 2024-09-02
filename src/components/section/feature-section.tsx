@@ -9,71 +9,98 @@ import {
   IconHelp,
   IconRouteAltLeft,
   IconTerminal2,
+  IconRobot,
+  IconBrain,
+  IconChartInfographic,
+  IconDeviceAnalytics,
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import MaxWidthWrapper from "../shared/max-width-wrapper";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 const featureSectionContent = {
   features: [
     {
-      title: "Streamlined Ordering",
+      title: "AI-Powered Menu",
       description:
-        "Simplify your restaurant's ordering process with our intuitive digital menu system.",
-      icon: <IconTerminal2 />,
+        "Generate a menu for your restaurant with AI by just uploading a picture of your menu.",
+      href: "/features/ai-menu",
+      icon: <IconRobot />,
     },
     {
-      title: "User-Friendly Interface",
+      title: "Smart User Interface",
       description:
-        "Enhance customer experience with our easy-to-navigate, visually appealing menu design.",
+        "Enhance customer experience with our AI-driven, adaptive menu design that learns from user interactions.",
+      href: "/features/smart-user-interface",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Affordable Pricing",
+      title: "Dynamic Pricing",
       description:
-        "Boost your business with our cost-effective solution, tailored for restaurants of all sizes.",
+        "Utilize AI algorithms to optimize pricing strategies based on demand, inventory, and market trends.",
+      href: "/features/dynamic-pricing",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "Reliable Performance",
+      title: "AI-Enhanced Performance",
       description:
-        "Ensure smooth operations with our stable and dependable platform.",
+        "Ensure smooth operations with our AI-powered platform that predicts and prevents potential issues.",
+      href: "/features/ai-enhanced-performance",
       icon: <IconCloud />,
     },
     {
-      title: "Multi-Location Support",
+      title: "Intelligent Multi-Location Management",
       description:
-        "Manage multiple restaurant locations effortlessly from a single dashboard.",
+        "Leverage AI to effortlessly manage multiple restaurant locations with automated insights and decision support.",
+      href: "/features/intelligent-multi-location-management",
       icon: <IconRouteAltLeft />,
     },
     {
-      title: "Dedicated Customer Support",
+      title: "AI-Assisted Customer Support",
       description:
-        "Get assistance when you need it with our responsive support team.",
+        "Get intelligent assistance with our AI-powered support system that learns and improves over time.",
+      href: "/features/ai-assisted-customer-support",
       icon: <IconHelp />,
     },
     {
-      title: "Customization Options",
+      title: "AI-Driven Customization",
       description:
-        "Tailor your digital menu to match your restaurant's unique brand and style.",
+        "Tailor your digital menu using AI that adapts to your restaurant's unique style and customer preferences.",
+      href: "/features/ai-driven-customization",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "Continuous Improvement",
+      title: "Continuous AI Learning",
       description:
-        "Benefit from regular updates and new features to keep your menu system cutting-edge.",
-      icon: <IconHeart />,
+        "Benefit from an AI system that continuously learns and evolves, keeping your menu system at the cutting edge.",
+      href: "/features/continuous-ai-learning",
+      icon: <IconBrain />,
+    },
+    {
+      title: "Predictive Analytics",
+      description:
+        "Harness the power of AI to forecast trends, optimize inventory, and make data-driven decisions.",
+      href: "/features/predictive-analytics",
+      icon: <IconChartInfographic />,
+    },
+    {
+      title: "AI-Powered Insights",
+      description:
+        "Gain deep insights into your operations with AI-driven analytics and visualizations.",
+      href: "/features/ai-powered-insights",
+      icon: <IconDeviceAnalytics />,
     },
   ],
   heading: {
-    badge: "Features",
+    badge: "AI-Powered Features",
     title: "The Future of Hospitality is Here",
-    subtitle: "with AI",
+    subtitle: "with Advanced AI",
   },
   description:
-    "Discover how our AI-powered management system can transform your business. Enjoy enhanced efficiency, improved customer satisfaction, and unparalleled insights into your operations.",
+    "Discover how our AI-powered management system can transform your business. Enjoy enhanced efficiency, improved customer satisfaction, and unparalleled insights into your operations, all driven by cutting-edge artificial intelligence.",
 };
 
 const Features = () => {
@@ -98,44 +125,49 @@ const Features = () => {
 const Feature = ({
   title,
   description,
+  href,
   icon,
   index,
 }: {
   title: string;
   description: string;
+  href?: string;
   icon: React.ReactNode;
   index: number;
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
-      )}
-    >
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
-        {icon}
-      </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-[#8730DA] transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
-          {title}
-        </span>
-      </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
-        {description}
-      </p>
-    </motion.div>
+    <Link href={href || "#"}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className={cn(
+          "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
+          (index === 0 || index === 4 || index === 8) &&
+            "lg:border-l dark:border-neutral-800",
+          index < 8 && "lg:border-b dark:border-neutral-800"
+        )}
+      >
+        {index < 8 && (
+          <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+        )}
+        {index >= 8 && (
+          <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+        )}
+        <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
+          {icon}
+        </div>
+        <div className="text-lg font-bold mb-2 relative z-10 px-10">
+          <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-[#8730DA] transition-all duration-200 origin-center" />
+          <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
+            {title}
+          </span>
+        </div>
+        <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
+          {description}
+        </p>
+      </motion.div>
+    </Link>
   );
 };
 

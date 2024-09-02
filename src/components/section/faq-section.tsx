@@ -13,7 +13,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { APP_NAME } from "@/config/app.config";
 
-const faqSectionContent = {
+const defaultFaqSectionContent = {
   faqs: [
     {
       question: `What is ${APP_NAME}?`,
@@ -36,7 +36,11 @@ const faqSectionContent = {
   description: `Get quick answers to common questions about ${APP_NAME} and discover how it can revolutionize your restaurant operations.`,
 };
 
-export default function FaqSection() {
+export default function FaqSection({
+  faqSectionContent = defaultFaqSectionContent,
+}: {
+  faqSectionContent?: typeof defaultFaqSectionContent;
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
