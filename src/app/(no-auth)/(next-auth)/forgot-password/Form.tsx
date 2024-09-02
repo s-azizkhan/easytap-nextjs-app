@@ -18,7 +18,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import Link from "next/link";
-import { FaGoogle } from "react-icons/fa";
 import ContinueWithGoogleBtn from "@/components/continue-with-google-btn";
 
 const formSchema = z.object({
