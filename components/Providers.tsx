@@ -14,7 +14,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
