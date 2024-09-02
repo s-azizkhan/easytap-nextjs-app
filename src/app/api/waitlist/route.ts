@@ -6,6 +6,9 @@ import { eq } from "drizzle-orm";
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
+    if (!email) {
+      return NextResponse.json({ error: "Email is missing" }, { status: 400 });
+    }
 
     // Check if the email is already in the waitlist
     const existingEmail = await db
@@ -25,7 +28,10 @@ export async function POST(request: Request) {
     await db.insert(waitlistTable).values({ email });
 
     return NextResponse.json(
-      { success: "Thank you for joining our waitlist! We're excited to have you on board and will keep you updated with the latest news." },
+      {
+        success:
+          "Thank you for joining our waitlist! We're excited to have you on board and will keep you updated with the latest news.",
+      },
       { status: 200 }
     );
   } catch (error: any) {
