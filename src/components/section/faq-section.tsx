@@ -13,11 +13,8 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { APP_NAME } from "@/config/app.config";
 
-export default function FaqSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
-  const faqs = [
+const faqSectionContent = {
+  faqs: [
     {
       question: `What is ${APP_NAME}?`,
       answer: `${APP_NAME} is an AI-powered restaurant management system that streamlines menu creation, order processing, and customer feedback analysis.`,
@@ -34,7 +31,14 @@ export default function FaqSection() {
       question: `How easy is it to implement ${APP_NAME} in my restaurant?`,
       answer: `${APP_NAME} offers a user-friendly setup process with dedicated support to ensure a smooth integration into your existing operations.`,
     },
-  ];
+  ],
+  title: "Frequently Asked Questions",
+  description: `Get quick answers to common questions about ${APP_NAME} and discover how it can revolutionize your restaurant operations.`,
+};
+
+export default function FaqSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
 
   return (
     <MaxWidthWrapper>
@@ -56,11 +60,10 @@ export default function FaqSection() {
               FAQ
             </span>
             <h2 className="text-pretty text-4xl font-bold lg:text-6xl mb-4">
-              Frequently Asked Questions
+              {faqSectionContent.title}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Get quick answers to common questions about {APP_NAME} and
-              discover how it can revolutionize your restaurant operations.
+              {faqSectionContent.description}
             </p>
           </motion.div>
           <motion.div
@@ -69,7 +72,7 @@ export default function FaqSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="max-w-4xl mx-auto space-y-4"
           >
-            {faqs.map((faq, index) => (
+            {faqSectionContent.faqs.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

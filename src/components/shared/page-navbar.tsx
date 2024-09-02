@@ -28,26 +28,50 @@ import Link from "next/link";
 import { AiImageIcon } from "hugeicons-react";
 import { APP_NAME } from "@/config/app.config";
 
-const subMenuItemsTwo = [
-  {
-    title: "Help Center",
-    description: "Get all the answers you need right here",
-    icon: <Zap className="size-5 shrink-0" />,
-    href: "/help-center",
+const navbarContent = {
+  appName: APP_NAME,
+  mainLinks: [
+    { title: "Features", href: "/features" },
+    { title: "Pricing", href: "/pricing" },
+    { title: "Blog", href: "/blogs" },
+  ],
+  resourcesMenu: [
+    {
+      title: "Help Center",
+      description: "Get all the answers you need right here",
+      icon: <Zap className="size-5 shrink-0" />,
+      href: "/help-center",
+    },
+    {
+      title: "Contact Us",
+      description: "We are here to help you with any questions you have",
+      icon: <Sunset className="size-5 shrink-0" />,
+      href: "/contact",
+    },
+    {
+      title: "Terms of Service",
+      description: "Our terms and conditions for using our services",
+      icon: <Book className="size-5 shrink-0" />,
+      href: "#",
+    },
+  ],
+  ctaButton: {
+    text: "Generate Menu",
+    href: "/register",
+    icon: <AiImageIcon className="size-4 ml-2" />,
   },
-  {
-    title: "Contact Us",
-    description: "We are here to help you with any questions you have",
-    icon: <Sunset className="size-5 shrink-0" />,
-    href: "/contact",
+  mobileMenuFooter: [
+    { title: "Press", href: "#" },
+    { title: "Contact", href: "/contact" },
+    { title: "Imprint", href: "#" },
+    { title: "Sitemap", href: "#" },
+  ],
+  loginButton: {
+    text: "Log in",
+    href: "/sign-in",
+    icon: <User2Icon className="size-4 ml-2" />,
   },
-  {
-    title: "Terms of Service",
-    description: "Our terms and conditions for using our services",
-    icon: <Book className="size-5 shrink-0" />,
-    href: "#",
-  },
-];
+};
 
 const DesktopNavigation = () => {
   return (
@@ -58,7 +82,7 @@ const DesktopNavigation = () => {
         <Link href="/">
           <div className="flex items-center gap-2">
             {/* TODO: add logo */}
-            <span className="text-xl font-bold">{APP_NAME}</span>
+            <span className="text-xl font-bold">{navbarContent.appName}</span>
           </div>
         </Link>
       </div>
@@ -66,16 +90,19 @@ const DesktopNavigation = () => {
       <div className="flex items-center gap-2">
         {/* Navigation Links */}
         <div className="flex items-center gap-4">
-          <Link
-            href="/features"
-            className={cn(
-              "text-muted-foreground",
-              navigationMenuTriggerStyle,
-              buttonVariants({ variant: "ghost" })
-            )}
-          >
-            Features
-          </Link>
+          {navbarContent.mainLinks.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              className={cn(
+                "text-muted-foreground",
+                navigationMenuTriggerStyle,
+                buttonVariants({ variant: "ghost" })
+              )}
+            >
+              {link.title}
+            </Link>
+          ))}
           {/* Navigation Menu */}
           <NavigationMenu>
             <NavigationMenuList>
@@ -84,7 +111,7 @@ const DesktopNavigation = () => {
                 <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-80 p-3">
-                    {subMenuItemsTwo.map((item, idx) => (
+                    {navbarContent.resourcesMenu.map((item, idx) => (
                       <li key={idx}>
                         <NavigationMenuLink
                           href={item.href}
@@ -109,32 +136,11 @@ const DesktopNavigation = () => {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          {/* Additional Links */}
-          <Link
-            href="/pricing"
-            className={cn(
-              "text-muted-foreground",
-              navigationMenuTriggerStyle,
-              buttonVariants({ variant: "ghost" })
-            )}
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/blogs"
-            className={cn(
-              "text-muted-foreground",
-              navigationMenuTriggerStyle,
-              buttonVariants({ variant: "ghost" })
-            )}
-          >
-            Blog
-          </Link>
         </div>
-        <Link href="/register">
+        <Link href={navbarContent.ctaButton.href}>
           <Button>
-            <span>Generate Menu</span>
-            <AiImageIcon className="size-4 ml-2" />
+            <span>{navbarContent.ctaButton.text}</span>
+            {navbarContent.ctaButton.icon}
           </Button>
         </Link>
         {/* Mode Toggle */}
@@ -151,13 +157,13 @@ const MobileNavigation = () => {
       <Link href="/">
         <div className="flex items-center gap-2">
           {/* TODO: add logo */}
-          <span className="text-xl font-bold">{APP_NAME}</span>
+          <span className="text-xl font-bold">{navbarContent.appName}</span>
         </div>
       </Link>
-      <Link href="/register">
+      <Link href={navbarContent.ctaButton.href}>
         <Button>
-          <span>Generate Menu</span>
-          <AiImageIcon className="size-4 ml-2" />
+          <span>{navbarContent.ctaButton.text}</span>
+          {navbarContent.ctaButton.icon}
         </Button>
       </Link>
       {/* Mobile Menu Button */}
@@ -173,7 +179,9 @@ const MobileNavigation = () => {
               <Link href="/">
                 <div className="flex items-center gap-2">
                   {/* TODO: add logo */}
-                  <span className="text-xl font-bold">{APP_NAME}</span>
+                  <span className="text-xl font-bold">
+                    {navbarContent.appName}
+                  </span>
                 </div>
               </Link>
             </SheetTitle>
@@ -189,10 +197,10 @@ const MobileNavigation = () => {
                   Resources
                 </AccordionTrigger>
                 <AccordionContent className="mt-2">
-                  {subMenuItemsTwo.map((item, idx) => (
+                  {navbarContent.resourcesMenu.map((item, idx) => (
                     <a
                       key={idx}
-                      href="#"
+                      href={item.href}
                       className={cn(
                         "flex items-start gap-4 rounded-md p-3 transition hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                       )}
@@ -211,63 +219,39 @@ const MobileNavigation = () => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <a href="#" className="font-semibold">
-              Pricing
-            </a>
-            <a href="#" className="font-semibold">
-              Blog
-            </a>
+            {navbarContent.mainLinks.map((link, index) => (
+              <a key={index} href={link.href} className="font-semibold">
+                {link.title}
+              </a>
+            ))}
           </div>
           {/* Footer Links and Buttons */}
           <div className="border-t pt-4">
             <div className="grid grid-cols-2 gap-4">
-              <a
-                href="#"
-                className={cn(
-                  buttonVariants({ variant: "ghost" }),
-                  "justify-start text-muted-foreground"
-                )}
-              >
-                Press
-              </a>
-              <Link
-                href="/contact"
-                className={cn(
-                  buttonVariants({ variant: "ghost" }),
-                  "justify-start text-muted-foreground"
-                )}
-              >
-                Contact
-              </Link>
-              <a
-                href="#"
-                className={cn(
-                  buttonVariants({ variant: "ghost" }),
-                  "justify-start text-muted-foreground"
-                )}
-              >
-                Imprint
-              </a>
-              <a
-                href="#"
-                className={cn(
-                  buttonVariants({ variant: "ghost" }),
-                  "justify-start text-muted-foreground"
-                )}
-              >
-                Sitemap
-              </a>
+              {navbarContent.mobileMenuFooter.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "justify-start text-muted-foreground"
+                  )}
+                >
+                  {item.title}
+                </Link>
+              ))}
             </div>
             <div className="mt-2 flex flex-col gap-3">
-              <Link href="/register">
+              <Link href={navbarContent.ctaButton.href}>
                 <Button>
-                  <span>Generate Menu</span>
-                  <AiImageIcon className="size-4 ml-2" />
+                  <span>{navbarContent.ctaButton.text}</span>
+                  {navbarContent.ctaButton.icon}
                 </Button>
               </Link>
-              <Link href="/sign-in">
+              <Link href={navbarContent.loginButton.href}>
                 <Button variant="outline">
-                  Log in <User2Icon className="size-4 ml-2" />
+                  {navbarContent.loginButton.text}{" "}
+                  {navbarContent.loginButton.icon}
                 </Button>
               </Link>
             </div>

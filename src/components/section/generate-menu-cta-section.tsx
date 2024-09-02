@@ -21,38 +21,45 @@ const CheckIcon = () => (
   </svg>
 );
 
-export default function GenerateMenuCtaSection() {
-  const features = [
+const generateMenuCtaContent = {
+  title: "Transform Your Menu with AI",
+  description:
+    "Elevate your dining experience with our AI-powered menu generator. Create stunning, personalized menus in seconds.",
+  features: [
     "Customizable Templates",
     "AI-Powered Suggestions",
     "Instant Generation",
     "User-Friendly Interface",
-  ];
+  ],
+  learnMoreLink: "/features",
+  getStartedLink: "/register",
+};
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      when: "beforeChildren",
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 },
+  },
+};
+
+export default function GenerateMenuCtaSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 },
-    },
-  };
 
   return (
     <section className="pb-24" id="generate-menu-cta-section" ref={ref}>
@@ -68,20 +75,19 @@ export default function GenerateMenuCtaSection() {
               variants={itemVariants}
               className="text-3xl font-bold md:text-4xl lg:text-5xl text-gray-900 dark:text-white"
             >
-              Transform Your Menu with AI
+              {generateMenuCtaContent.title}
             </motion.h3>
             <motion.p
               variants={itemVariants}
               className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl"
             >
-              Elevate your dining experience with our AI-powered menu generator.
-              Create stunning, personalized menus in seconds.
+              {generateMenuCtaContent.description}
             </motion.p>
             <motion.ul
               variants={itemVariants}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4"
             >
-              {features.map((feature, index) => (
+              {generateMenuCtaContent.features.map((feature, index) => (
                 <motion.li
                   key={index}
                   variants={itemVariants}
@@ -97,7 +103,7 @@ export default function GenerateMenuCtaSection() {
             variants={itemVariants}
             className="flex shrink-0 flex-col gap-4 sm:flex-row"
           >
-            <Link href="/features" passHref>
+            <Link href={generateMenuCtaContent.learnMoreLink} passHref>
               <Button
                 variant="outline"
                 className="w-full sm:w-auto text-lg py-3 px-6 transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -106,7 +112,7 @@ export default function GenerateMenuCtaSection() {
                 <ExternalLink className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link href="/register" passHref>
+            <Link href={generateMenuCtaContent.getStartedLink} passHref>
               <Button className="w-full sm:w-auto text-lg py-3 px-6 transition-all duration-300 group">
                 Get Started
                 <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />

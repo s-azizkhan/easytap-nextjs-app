@@ -12,34 +12,34 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { APP_NAME } from "@/config/app.config";
 
-function TestimonialCards() {
-  const testimonials = [
-    {
-      name: "Alex Johnson",
-      role: "Restaurant Owner",
-      company: "Bistro Bliss",
-      image: "https://www.shadcnblocks.com/images/block/avatar-1.webp",
-      content: `"${APP_NAME} has transformed our restaurant operations. Our menu management is now seamless, and customer feedback has improved significantly!`,
-      rating: 5,
-    },
-    {
-      name: "Sarah Lee",
-      role: "Café Manager",
-      company: "Brew & Chew",
-      image: "https://www.shadcnblocks.com/images/block/avatar-2.webp",
-      content: `"As a small café, efficiency is key. ${APP_NAME}'s AI-powered system has streamlined our ordering process and boosted our overall productivity.`,
-      rating: 5,
-    },
-    {
-      name: "Michael Chen",
-      role: "Head Chef",
-      company: "Fusion Flavors",
-      image: "https://www.shadcnblocks.com/images/block/avatar-3.webp",
-      content: `The AI menu suggestions from ${APP_NAME} have been a game-changer. It's helped us create innovative dishes that our customers love!`,
-      rating: 4,
-    },
-  ];
+const testimonialsContent = [
+  {
+    name: "Alex Johnson",
+    role: "Restaurant Owner",
+    company: "Bistro Bliss",
+    image: "https://www.shadcnblocks.com/images/block/avatar-1.webp",
+    content: `"${APP_NAME} has transformed our restaurant operations. Our menu management is now seamless, and customer feedback has improved significantly!`,
+    rating: 5,
+  },
+  {
+    name: "Sarah Lee",
+    role: "Café Manager",
+    company: "Brew & Chew",
+    image: "https://www.shadcnblocks.com/images/block/avatar-2.webp",
+    content: `"As a small café, efficiency is key. ${APP_NAME}'s AI-powered system has streamlined our ordering process and boosted our overall productivity.`,
+    rating: 5,
+  },
+  {
+    name: "Michael Chen",
+    role: "Head Chef",
+    company: "Fusion Flavors",
+    image: "https://www.shadcnblocks.com/images/block/avatar-3.webp",
+    content: `The AI menu suggestions from ${APP_NAME} have been a game-changer. It's helped us create innovative dishes that our customers love!`,
+    rating: 4,
+  },
+];
 
+function TestimonialCards() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -48,7 +48,7 @@ function TestimonialCards() {
       className="w-full max-w-6xl mx-auto mt-16"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((testimonial, index) => (
+        {testimonialsContent.map((testimonial, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}

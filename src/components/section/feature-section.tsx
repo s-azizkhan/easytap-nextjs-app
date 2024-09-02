@@ -16,11 +16,8 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const Features = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
-  const features = [
+const featureSectionContent = {
+  features: [
     {
       title: "Streamlined Ordering",
       description:
@@ -69,7 +66,20 @@ const Features = () => {
         "Benefit from regular updates and new features to keep your menu system cutting-edge.",
       icon: <IconHeart />,
     },
-  ];
+  ],
+  heading: {
+    badge: "Features",
+    title: "The Future of Hospitality is Here",
+    subtitle: "with AI",
+  },
+  description:
+    "Discover how our AI-powered management system can transform your business. Enjoy enhanced efficiency, improved customer satisfaction, and unparalleled insights into your operations.",
+};
+
+const Features = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   return (
     <motion.div
       ref={ref}
@@ -78,7 +88,7 @@ const Features = () => {
       transition={{ duration: 0.5, staggerChildren: 0.1 }}
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 mx-auto"
     >
-      {features.map((feature, index) => (
+      {featureSectionContent.features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
     </motion.div>
@@ -151,7 +161,7 @@ export default function FeatureSection() {
             className="text-center lg:mb-5"
           >
             <span className="py-1.5 px-5 bg-indigo-100 dark:bg-indigo-900 rounded-full text-xs font-semibold text-indigo-600 dark:text-indigo-300 text-center inline-block mb-4 transition-all duration-300 hover:bg-indigo-200 dark:hover:bg-indigo-800">
-              Features
+              {featureSectionContent.heading.badge}
             </span>
             <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-6 sm:mb-8">
               <motion.span
@@ -162,7 +172,7 @@ export default function FeatureSection() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="block mb-2"
               >
-                The Future of Hospitality is Here
+                {featureSectionContent.heading.title}
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -172,7 +182,7 @@ export default function FeatureSection() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent inline-flex items-center flex-wrap justify-center"
               >
-                with AI
+                {featureSectionContent.heading.subtitle}
                 <SparklesIcon className="size-6 sm:size-7 ml-2 text-purple-600 animate-pulse" />
               </motion.span>
             </h2>
@@ -182,9 +192,7 @@ export default function FeatureSection() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
-              Discover how our AI-powered management system can transform your
-              business. Enjoy enhanced efficiency, improved customer
-              satisfaction, and unparalleled insights into your operations.
+              {featureSectionContent.description}
             </motion.p>
           </motion.div>
           <Features />

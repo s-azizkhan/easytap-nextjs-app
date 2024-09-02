@@ -12,36 +12,44 @@ import {
 import { motion } from "framer-motion";
 import { APP_NAME } from "@/config/app.config";
 
-const sections = [
-  {
-    title: "Product",
-    links: [
-      { name: "Overview", href: "#" },
-      { name: "Pricing", href: "/pricing" },
-      { name: "Features", href: "/features" },
-      { name: "Integrations", href: "#" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { name: "About", href: "#" },
-      { name: "Team", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Contact", href: "/contact" },
-      { name: "Privacy", href: "#" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { name: "Help", href: "#" },
-      { name: "Sales", href: "#" },
-      { name: "Advertise", href: "#" },
-    ],
-  },
-];
+const footerContent = {
+  tagline: "Extend your hospitality like never before.",
+  sections: [
+    {
+      title: "Product",
+      links: [
+        { name: "Overview", href: "#" },
+        { name: "Pricing", href: "/pricing" },
+        { name: "Features", href: "/features" },
+        { name: "Integrations", href: "#" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { name: "About", href: "#" },
+        { name: "Team", href: "#" },
+        { name: "Blog", href: "#" },
+        { name: "Careers", href: "#" },
+        { name: "Contact", href: "/contact" },
+        { name: "Privacy", href: "#" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { name: "Help", href: "#" },
+        { name: "Sales", href: "#" },
+        { name: "Advertise", href: "#" },
+      ],
+    },
+  ],
+  legal: [
+    { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "#" },
+  ],
+  socialIcons: [FaDiscord, FaRedditAlien, FaTwitter, FaTelegramPlane],
+};
 
 export default function PageFooter() {
   return (
@@ -60,11 +68,6 @@ export default function PageFooter() {
               transition={{ delay: 0.2 }}
             >
               <Link href="/" className="flex items-center">
-                {/* <img
-                  src="/logo.svg"
-                  alt="EasyTap Logo"
-                  className="h-10 w-auto mr-3"
-                /> */}
                 <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
                   {APP_NAME}
                 </span>
@@ -77,7 +80,7 @@ export default function PageFooter() {
               className="flex flex-col gap-4 md:flex-row md:items-center"
             >
               <p className="text-lg font-medium text-gray-600 dark:text-gray-300">
-                Extend your hospitality like never before.
+                {footerContent.tagline}
               </p>
               <div className="flex gap-3">
                 <Link
@@ -97,7 +100,7 @@ export default function PageFooter() {
           </div>
           <Separator className="my-10" />
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            {sections.map((section, sectionIdx) => (
+            {footerContent.sections.map((section, sectionIdx) => (
               <motion.div
                 key={sectionIdx}
                 initial={{ y: 20, opacity: 0 }}
@@ -128,29 +131,29 @@ export default function PageFooter() {
                 Legal
               </h3>
               <ul className="space-y-3 text-gray-600 dark:text-gray-400">
-                <li className="font-medium transition-colors hover:text-primary">
-                  <Link href="#">Terms of Service</Link>
-                </li>
-                <li className="font-medium transition-colors hover:text-primary">
-                  <Link href="#">Privacy Policy</Link>
-                </li>
+                {footerContent.legal.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="font-medium transition-colors hover:text-primary"
+                  >
+                    <Link href={item.href}>{item.name}</Link>
+                  </li>
+                ))}
               </ul>
               <h3 className="mb-4 mt-8 text-lg font-bold text-gray-800 dark:text-gray-200">
                 Social
               </h3>
               <ul className="flex space-x-4 text-gray-600 dark:text-gray-400 items-center">
-                {[FaDiscord, FaRedditAlien, FaTwitter, FaTelegramPlane].map(
-                  (Icon, idx) => (
-                    <li
-                      key={idx}
-                      className="transition-transform hover:scale-110"
-                    >
-                      <a href="#" className="text-gray-400 hover:text-primary">
-                        <Icon className="size-6" />
-                      </a>
-                    </li>
-                  )
-                )}
+                {footerContent.socialIcons.map((Icon, idx) => (
+                  <li
+                    key={idx}
+                    className="transition-transform hover:scale-110"
+                  >
+                    <a href="#" className="text-gray-400 hover:text-primary">
+                      <Icon className="size-6" />
+                    </a>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>

@@ -21,19 +21,16 @@ import {
 import MaxWidthWrapper from "../shared/max-width-wrapper";
 import { motion, useInView } from "framer-motion";
 
-export default function PricingSection() {
-  const [isYearly, setIsYearly] = useState(false);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
-  const plans = [
+const pricingSectionContent = {
+  title: "Upgrade Your Restaurant with",
+  titleHighlight: "AI",
+  description:
+    "Choose the perfect plan to revolutionize your restaurant operations. Start your 30-day free trial today - no credit card required.",
+  plans: [
     {
       name: "Starter",
       description: "Perfect for small cafes",
       icon: <Coffee01Icon className="size-8 inline-flex text-indigo-600" />,
-      price: isYearly ? "$12" : "$15",
-      originalPrice: isYearly ? "$15" : "$19",
-      billingPeriod: isYearly ? "$144 annually" : "$180 annually",
       features: [
         "Basic AI menu suggestions",
         "Simple order management",
@@ -43,11 +40,9 @@ export default function PricingSection() {
     },
     {
       name: "Growth",
+      isPopular: true,
       description: "Ideal for growing restaurants",
       icon: <Rocket01Icon className="size-8 inline-flex text-indigo-600" />,
-      price: isYearly ? "$28" : "$35",
-      originalPrice: isYearly ? "$35" : "$44",
-      billingPeriod: isYearly ? "$336 annually" : "$420 annually",
       features: [
         "Advanced AI menu optimization",
         "Real-time order tracking",
@@ -59,9 +54,6 @@ export default function PricingSection() {
       name: "Enterprise",
       description: "For multi-location chains",
       icon: <Building01Icon className="size-8 inline-flex text-indigo-600" />,
-      price: isYearly ? "$56" : "$70",
-      originalPrice: isYearly ? "$70" : "$88",
-      billingPeriod: isYearly ? "$672 annually" : "$840 annually",
       features: [
         "Custom AI solutions",
         "Multi-location management",
@@ -69,7 +61,35 @@ export default function PricingSection() {
         "Dedicated account manager",
       ],
     },
-  ];
+  ],
+  footer:
+    "All plans include a 30-day money-back guarantee and a free 30-day trial. Upgrade, downgrade, or cancel anytime.",
+};
+
+const PricingSection = () => {
+  const [isYearly, setIsYearly] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
+  const getPricing = (planIndex: number) => {
+    const prices = [
+      { monthly: 15, yearly: 12 },
+      { monthly: 35, yearly: 28 },
+      { monthly: 70, yearly: 56 },
+    ];
+    const price = isYearly
+      ? prices[planIndex].yearly
+      : prices[planIndex].monthly;
+    const originalPrice = isYearly
+      ? prices[planIndex].monthly
+      : Math.ceil(prices[planIndex].monthly * 1.25);
+    const annualPrice = price * 12;
+    return {
+      price: `$${price}`,
+      originalPrice: `$${originalPrice}`,
+      billingPeriod: `$${annualPrice} annually`,
+    };
+  };
 
   return (
     <MaxWidthWrapper>
@@ -91,16 +111,14 @@ export default function PricingSection() {
               Pricing Plans
             </span>
             <h2 className="text-pretty text-4xl font-bold lg:text-6xl ">
-              Upgrade Your Restaurant with{" "}
+              {pricingSectionContent.title}{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-                AI
+                {pricingSectionContent.titleHighlight}
                 <SparklesIcon className="size-8 inline-flex text-indigo-600 animate-pulse" />
               </span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 lg:text-xl max-w-2xl">
-              Choose the perfect plan to revolutionize your restaurant
-              operations. Start your 30-day free trial today - no credit card
-              required.
+              {pricingSectionContent.description}
             </p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -135,7 +153,7 @@ export default function PricingSection() {
               </span>
             </motion.div>
             <div className="flex flex-col items-stretch gap-8 lg:flex-row">
-              {plans.map((plan, index) => (
+              {pricingSectionContent.plans.map((plan, index) => (
                 <Card
                   key={index}
                   className={`flex w-full lg:w-1/3 flex-col justify-between text-left transition-all duration-300 hover:shadow-xl ${
@@ -145,7 +163,7 @@ export default function PricingSection() {
                   }`}
                 >
                   <CardHeader className="relative">
-                    {plan.name === "Growth" && (
+                    {plan.isPopular && (
                       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-md">
                         Most Popular
                       </div>
@@ -158,11 +176,13 @@ export default function PricingSection() {
                       {plan.description}
                     </p>
                     <div className="flex items-baseline">
-                      <span className="text-4xl font-bold">{plan.price}</span>
+                      <span className="text-4xl font-bold">
+                        {getPricing(index).price}
+                      </span>
                       <span className="text-muted-foreground ml-1">/month</span>
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Billed {plan.billingPeriod}
+                      Billed {getPricing(index).billingPeriod}
                     </p>
                     <p className="text-sm text-indigo-600 font-semibold mt-2">
                       Save {isYearly ? "20%" : "0%"} with annual billing
@@ -185,14 +205,12 @@ export default function PricingSection() {
                   <CardFooter className="mt-auto pt-6">
                     <Button
                       className={`w-full transition-all duration-300 ${
-                        plan.name === "Growth"
+                        plan.isPopular
                           ? "bg-indigo-600 hover:bg-indigo-700 text-white"
                           : "bg-white hover:bg-indigo-50 text-indigo-600 border border-indigo-600"
                       }`}
                     >
-                      {plan.name === "Growth"
-                        ? "Get Started"
-                        : "Start Free Trial"}
+                      {plan.isPopular ? "Get Started" : "Start Free Trial"}
                       <ArrowRight01Icon className="ml-2 size-5" />
                     </Button>
                   </CardFooter>
@@ -205,12 +223,13 @@ export default function PricingSection() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="text-sm text-muted-foreground mt-8"
             >
-              All plans include a 30-day money-back guarantee and a free 30-day
-              trial. Upgrade, downgrade, or cancel anytime.
+              {pricingSectionContent.footer}
             </motion.p>
           </motion.div>
         </div>
       </motion.section>
     </MaxWidthWrapper>
   );
-}
+};
+
+export default PricingSection;
