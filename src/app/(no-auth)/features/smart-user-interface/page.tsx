@@ -14,6 +14,14 @@ import Image from "next/image";
 import { MagicWand01Icon } from "hugeicons-react";
 import FaqSection from "@/components/section/faq-section";
 import { FaThinkPeaks } from "react-icons/fa";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default function SmartUserInterfacePage() {
   const faqContent = {
@@ -70,12 +78,21 @@ export default function SmartUserInterfacePage() {
   return (
     <MaxWidthWrapper>
       <div className="py-20">
-        <Link
-          href="/#feature-section"
-          className="flex items-center text-gray-600 hover:underline mb-6"
-        >
-          <IconArrowLeft className="mr-2" /> Back to Features
-        </Link>
+        <Breadcrumb className="mb-6">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/features">Features</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Smart User Interface</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
         <HeaderSection
           label="Smart User Interface"

@@ -55,42 +55,42 @@ const featureSectionContent = {
       title: "Intelligent Multi-Location Management",
       description:
         "Leverage AI to effortlessly manage multiple restaurant locations with automated insights and decision support.",
-      href: "/features/intelligent-multi-location-management",
+      href: "#",
       icon: <IconRouteAltLeft />,
     },
     {
       title: "AI-Assisted Customer Support",
       description:
         "Get intelligent assistance with our AI-powered support system that learns and improves over time.",
-      href: "/features/ai-assisted-customer-support",
+      href: "#",
       icon: <IconHelp />,
     },
     {
       title: "AI-Driven Customization",
       description:
         "Tailor your digital menu using AI that adapts to your restaurant's unique style and customer preferences.",
-      href: "/features/ai-driven-customization",
+      href: "#",
       icon: <IconAdjustmentsBolt />,
     },
     {
       title: "Continuous AI Learning",
       description:
         "Benefit from an AI system that continuously learns and evolves, keeping your menu system at the cutting edge.",
-      href: "/features/continuous-ai-learning",
+      href: "#",
       icon: <IconBrain />,
     },
     {
       title: "Predictive Analytics",
       description:
         "Harness the power of AI to forecast trends, optimize inventory, and make data-driven decisions.",
-      href: "/features/predictive-analytics",
+      href: "#",
       icon: <IconChartInfographic />,
     },
     {
       title: "AI-Powered Insights",
       description:
         "Gain deep insights into your operations with AI-driven analytics and visualizations.",
-      href: "/features/ai-powered-insights",
+      href: "#",
       icon: <IconDeviceAnalytics />,
     },
   ],
